@@ -6,15 +6,16 @@
 <title>Buscador de Proveedores</title>
 <style>
   :root{
-    --tier1:#f15b2b;
-    --tier2:#0088FE;
-    --tier3:#ffb000;
-    --tierx:#8a8a8a;
-    --bg:#f4f5f7;
+    --tier1:#F15B2B;
+    --tier2:#0B84FF;
+    --tier3:#FFB000;
+    --tierx:#9CA3AF;
+    --navy:#0B1220;
+    --bg:#F4F5F8;
     --card:#ffffff;
-    --border:#e2e4e8;
-    --text:#1f2430;
-    --muted:#6b7280;
+    --border:#E7E9EE;
+    --text:#131722;
+    --muted:#6B7280;
   }
   *{box-sizing:border-box;}
   body{
@@ -24,7 +25,7 @@
     color:var(--text);
   }
   header{
-    background:#111827;
+    background:var(--navy);
     color:#fff;
     padding:18px 32px;
     display:flex;
@@ -108,9 +109,9 @@
     user-select:none;
   }
   .chip.active{
-    background:#111827;
+    background:var(--navy);
     color:#fff;
-    border-color:#111827;
+    border-color:var(--navy);
   }
   .summary{
     display:flex;
@@ -125,22 +126,41 @@
   .card{
     background:var(--card);
     border:1px solid var(--border);
-    border-left-width:4px;
-    border-radius:8px;
-    padding:12px 16px;
+    border-radius:10px;
+    display:flex;
+    align-items:stretch;
+    gap:0;
+    overflow:hidden;
+    box-shadow:0 1px 2px rgba(16,20,30,.04);
+  }
+  .rail{
+    flex-shrink:0;
+    width:64px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    color:#fff;
+  }
+  .rail.p1{background:var(--tier1);}
+  .rail.p2{background:var(--tier2);}
+  .rail.p3{background:var(--tier3);}
+  .rail.px{background:var(--tierx);}
+  .rail-num{font-size:22px;font-weight:800;line-height:1;}
+  .rail-label{font-size:8.5px;font-weight:700;letter-spacing:.06em;opacity:.9;}
+  .card-body{
+    flex:1;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:16px;
     flex-wrap:wrap;
+    padding:12px 18px;
   }
-  .card.p1{border-left-color:var(--tier1);}
-  .card.p2{border-left-color:var(--tier2);}
-  .card.p3{border-left-color:var(--tier3);}
-  .card.px{border-left-color:var(--tierx);}
   .card-main{flex:1;min-width:260px;display:flex;flex-direction:column;gap:4px;}
   .card-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
-  .card-name{font-size:15px;font-weight:600;margin:0;}
+  .card-name{font-size:15px;font-weight:700;margin:0;color:var(--navy);}
   .card-dept{font-size:12px;color:var(--muted);margin:0;}
   .tags{display:flex;flex-wrap:wrap;gap:5px;}
   .tag{
@@ -151,7 +171,7 @@
     color:#444;
     border:1px solid #dfe2e8;
   }
-  .tag.on{background:#e7f3ee;color:#0d6b45;border-color:#bfe3d1;}
+  .tag.on{background:#FFF1EA;color:#C24418;border-color:#FBD9C7;}
   .card-side{
     display:flex;
     align-items:center;
@@ -159,18 +179,6 @@
     flex-wrap:wrap;
     justify-content:flex-end;
   }
-  .prio-pill{
-    font-size:11px;
-    font-weight:700;
-    color:#fff;
-    padding:3px 9px;
-    border-radius:20px;
-    white-space:nowrap;
-  }
-  .prio-pill.p1{background:var(--tier1);}
-  .prio-pill.p2{background:var(--tier2);}
-  .prio-pill.p3{background:var(--tier3);}
-  .prio-pill.px{background:var(--tierx);}
   .card-contact{
     font-size:12px;
     color:var(--text);
@@ -181,7 +189,7 @@
   .metric-btn{
     font-size:12px;
     font-weight:600;
-    color:#111827;
+    color:var(--navy);
     background:#f1f2f5;
     border:1px solid var(--border);
     border-radius:6px;
@@ -308,11 +316,9 @@ function prioClass(pr){
   if(pr==='3') return 'p3';
   return 'px';
 }
-function prioLabel(pr){
-  if(pr==='1') return 'Prioridad 1';
-  if(pr==='2') return 'Prioridad 2';
-  if(pr==='3') return 'Prioridad 3';
-  return 'Sin prioridad asignada';
+function railNum(pr){
+  if(pr==='1'||pr==='2'||pr==='3') return pr;
+  return '–';
 }
 
 function render(){
@@ -352,7 +358,7 @@ function render(){
 
   list.forEach(p=>{
     const card = document.createElement('div');
-    card.className = `card ${prioClass(p.pr)}`;
+    card.className = 'card';
 
     const tagsHtml = Object.keys(serviceLabels).map(key=>{
       const on = p[key] === 'SI';
@@ -371,27 +377,32 @@ function render(){
     const panelId = `drivers-${Math.random().toString(36).slice(2)}`;
 
     card.innerHTML = `
-      <div class="card-main">
-        <div class="card-top">
-          <span class="card-name">${p.n}</span>
-          <span class="card-dept">${p.d}${p.dir && p.dir !== '-' ? ' · ' + p.dir : ''}</span>
-        </div>
-        <div class="tags">${tagsHtml}</div>
-        <div class="drivers-panel" id="${panelId}">
-          ${hasMetrics ? `
-            <table>
-              <thead><tr><th>Conductor</th><th>Servicios (30d)</th></tr></thead>
-              <tbody>
-                ${p.conductores_30d.map(c=>`<tr><td>${c.nombre}</td><td>${c.servicios}</td></tr>`).join('')}
-              </tbody>
-            </table>
-          ` : ''}
-        </div>
+      <div class="rail ${prioClass(p.pr)}">
+        <span class="rail-num">${railNum(p.pr)}</span>
+        <span class="rail-label">PRIORIDAD</span>
       </div>
-      <div class="card-side">
-        <span class="prio-pill ${prioClass(p.pr)}">${prioLabel(p.pr)}</span>
-        <button class="metric-btn ${hasMetrics?'':'no-data'}" ${hasMetrics ? `onclick="togglePanel('${panelId}', this)"` : 'disabled'}>${metricLabel}</button>
-        <div class="card-contact">${tel1}${tel2}${waLink}</div>
+      <div class="card-body">
+        <div class="card-main">
+          <div class="card-top">
+            <span class="card-name">${p.n}</span>
+            <span class="card-dept">${p.d}${p.dir && p.dir !== '-' ? ' · ' + p.dir : ''}</span>
+          </div>
+          <div class="tags">${tagsHtml}</div>
+          <div class="drivers-panel" id="${panelId}">
+            ${hasMetrics ? `
+              <table>
+                <thead><tr><th>Conductor</th><th>Servicios (30d)</th></tr></thead>
+                <tbody>
+                  ${p.conductores_30d.map(c=>`<tr><td>${c.nombre}</td><td>${c.servicios}</td></tr>`).join('')}
+                </tbody>
+              </table>
+            ` : ''}
+          </div>
+        </div>
+        <div class="card-side">
+          <button class="metric-btn ${hasMetrics?'':'no-data'}" ${hasMetrics ? `onclick="togglePanel('${panelId}', this)"` : 'disabled'}>${metricLabel}</button>
+          <div class="card-contact">${tel1}${tel2}${waLink}</div>
+        </div>
       </div>
     `;
     grid.appendChild(card);
