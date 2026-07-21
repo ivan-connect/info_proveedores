@@ -238,6 +238,11 @@
 <div class="container">
   <div class="filters">
     <div class="field">
+      <label for="search">Proveedor</label>
+      <input type="text" id="search" placeholder="Buscar por nombre…" style="min-width:200px;">
+    </div>
+    <div class="divider"></div>
+    <div class="field">
       <label for="dept">Departamento</label>
       <select id="dept">
         <option value="">Todos los departamentos</option>
@@ -295,6 +300,7 @@ document.querySelectorAll('.chip').forEach(chip=>{
 
 deptSelect.addEventListener('change', render);
 document.getElementById('sort').addEventListener('change', render);
+document.getElementById('search').addEventListener('input', render);
 
 function prioClass(pr){
   if(pr==='1') return 'p1';
@@ -312,16 +318,18 @@ function prioLabel(pr){
 function render(){
   const dept = deptSelect.value;
   const sortBy = document.getElementById('sort').value;
+  const query = document.getElementById('search').value.trim().toLowerCase();
   const grid = document.getElementById('grid');
 
-  if(!dept){
+  if(!dept && !query){
     grid.innerHTML = '';
-    document.getElementById('resultCount').textContent = 'Selecciona un departamento para ver proveedores';
+    document.getElementById('resultCount').textContent = 'Selecciona un departamento o busca un proveedor por nombre';
     document.getElementById('emptyState').style.display = 'none';
     return;
   }
 
   let list = PROVIDERS.filter(p=>{
+    if(query && !p.n.toLowerCase().includes(query)) return false;
     if(dept && p.d !== dept) return false;
     for(const key of activeServices){
       if(p[key] !== 'SI') return false;
