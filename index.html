@@ -26,51 +26,72 @@
   header{
     background:#111827;
     color:#fff;
-    padding:24px 32px;
+    padding:18px 32px;
   }
-  header h1{margin:0 0 4px;font-size:22px;}
-  header p{margin:0;color:#9aa1b1;font-size:14px;}
+  header h1{margin:0 0 4px;font-size:20px;}
+  header p{margin:0;color:#9aa1b1;font-size:13px;}
   .badge-preview{
     display:inline-block;
-    margin-top:10px;
+    margin-top:8px;
     background:#3b2f0e;
     color:#ffcf6b;
     border:1px solid #6b4f10;
-    padding:4px 10px;
+    padding:3px 9px;
     border-radius:6px;
-    font-size:12px;
+    font-size:11px;
   }
   .container{max-width:1100px;margin:0 auto;padding:24px 16px 60px;}
   .filters{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:12px;
-    padding:20px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-    margin-bottom:24px;
+    border-radius:10px;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px 20px;
+    margin-bottom:20px;
   }
-  @media(max-width:640px){.filters{grid-template-columns:1fr;}}
+  .field{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
   .field label{
-    display:block;
-    font-size:12px;
+    font-size:11px;
     font-weight:600;
     color:var(--muted);
     text-transform:uppercase;
     letter-spacing:.04em;
-    margin-bottom:6px;
+    white-space:nowrap;
+    margin:0;
   }
   select, input[type=text]{
-    width:100%;
-    padding:10px 12px;
+    padding:7px 10px;
     border:1px solid var(--border);
-    border-radius:8px;
-    font-size:14px;
+    border-radius:7px;
+    font-size:13px;
     background:#fff;
   }
-  .services{grid-column:1/-1;}
-  .services .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  #dept{min-width:190px;}
+  .sort-select{min-width:190px;}
+  .services{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .services .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .divider{
+    width:1px;
+    height:24px;
+    background:var(--border);
+  }
+  @media(max-width:760px){
+    .filters{flex-direction:column;align-items:stretch;}
+    .divider{display:none;}
+    #dept, .sort-select{width:100%;}
+  }
   .chip{
     border:1px solid var(--border);
     border-radius:20px;
@@ -209,6 +230,7 @@
         <option value="">Todos los departamentos</option>
       </select>
     </div>
+    <div class="divider"></div>
     <div class="field">
       <label for="sort">Ordenar por</label>
       <select id="sort" class="sort-select">
@@ -217,8 +239,9 @@
         <option value="name">Nombre (A-Z)</option>
       </select>
     </div>
+    <div class="divider"></div>
     <div class="field services">
-      <label>Servicio requerido</label>
+      <label>Servicio</label>
       <div class="chips" id="serviceChips">
         <div class="chip" data-key="gl">Grúa liviana</div>
         <div class="chip" data-key="legal">Legal</div>
