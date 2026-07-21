@@ -1,0 +1,2104 @@
+[
+  {
+    "n": "1A ELEGIDOS",
+    "pr": "1",
+    "d": "VALLE DEL CAUCA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "3103536862",
+    "t2": "3113365963",
+    "wa": "3155772929-3103536862",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "2M GLOBAL COMPANY SAS",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "",
+    "t1": "3011202833",
+    "t2": "3234655145",
+    "wa": "3011202833-3234655145",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "2M GLOBAL COMPANY SAS",
+    "pr": "1",
+    "d": "BOGOTA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "3011202833",
+    "t2": "3234655145",
+    "wa": "3011202833-3234655145",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "A&J CONSULTING S.A.S",
+    "pr": "2",
+    "d": "BOGOTA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "322 8498324",
+    "t2": "317 7970286",
+    "wa": "3177970286-3228498324",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "A&J CONSULTING S.A.S",
+    "pr": "2",
+    "d": "VALLE DEL CAUCA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "322 8498324",
+    "t2": "317 7970286",
+    "wa": "3177970286-3228498324",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ABILITY GRÚAS MZL S.A.S",
+    "pr": "1",
+    "d": "CALDAS",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "",
+    "t2": "-",
+    "wa": "",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AFS ASISTENCIA FERNANDO SANCHEZ S.A.S",
+    "pr": "3",
+    "d": "ANTIOQUIA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "",
+    "t2": "-",
+    "wa": "",
+    "servicios_30d": 8,
+    "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 6
+      },
+      {
+        "nombre": "Carlos Alberto Torres Rodríguez",
+        "servicios": 2
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AJ GRUAS S.A.S.",
+    "pr": "2",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "314 7664370",
+    "t2": "-",
+    "wa": "",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AJ GRUAS S.A.S.",
+    "pr": "2",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "314 7664370",
+    "t2": "-",
+    "wa": "",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ALINEACIONES Y SUSPENSIONES GRM S.A.S",
+    "pr": "2",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "CALLE 67#48A-69",
+    "t1": "317 8527228",
+    "t2": "301 2747148",
+    "wa": "317 8527228",
+    "servicios_30d": 10,
+    "conductores_30d": [
+      {
+        "nombre": "DANI CARO  - OMG467",
+        "servicios": 5
+      },
+      {
+        "nombre": "VICTOR  CORREA - TSI907",
+        "servicios": 1
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 1
+      },
+      {
+        "nombre": "Luis Carlos Londoño Ortega  - WMR450",
+        "servicios": 1
+      },
+      {
+        "nombre": ". Jhon Vásquez Ramírez - JYY291",
+        "servicios": 1
+      },
+      {
+        "nombre": "Miller Eduardo Londoño Sarrazola - WCN968",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AMERICAN SERVICE SOLUTION",
+    "pr": "2",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "350 6110676",
+    "t2": "305 3470815",
+    "wa": "350 6110676-305 3470815",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AMERICAN SERVICE SOLUTION",
+    "pr": "2",
+    "d": "MEDELLIN",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "350 6110676",
+    "t2": "305 3470815",
+    "wa": "350 6110676-305 3470815",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ANDRES FELIPE BAHAMON-SOLO MOTOS",
+    "pr": "2",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3206330135",
+    "t2": "-",
+    "wa": "3206330135",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ANGELES DEL CAMINO ASISTENCIA VIAL S.A.S.",
+    "pr": "2",
+    "d": "ANTIOQUIA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3225493769",
+    "t2": "-",
+    "wa": "3225493769",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ANTIOQUEÑA DE ASISTENCIA SAS",
+    "pr": "2",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "CARRERA 50E # 3SUR - 60 BARRIO CRISTO REY BODEGA",
+    "t1": "312 6255330",
+    "t2": "-",
+    "wa": "3006732247",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "APOYO S&G SAS",
+    "pr": "3",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "3017753919",
+    "t2": "-",
+    "wa": "3017753919",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AR SAS",
+    "pr": "2",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "",
+    "t2": "-",
+    "wa": "",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ARG GRUAS S.A.S",
+    "pr": "1",
+    "d": "QUINDIO",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "KM 1.5 BAJANDO HACIA LA BELLA FRENTE A LA CASONA DE HELENA CALARCA",
+    "t1": "311 3712048",
+    "t2": "-",
+    "wa": "311 3712048",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASINSPEC S.A.S.",
+    "pr": "2",
+    "d": "CORDOBA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "CR 39A NO 29A-07 BARRIO SOFIA ORIENTAL MONTERIA",
+    "t1": "3185712040",
+    "t2": "3002795527",
+    "wa": "3185712040-3002795527",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIA DE GRUAS EXPRESS SAS",
+    "pr": "2",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "317 4052527",
+    "t2": "310 7551157",
+    "wa": "317 4052527-310 7551157",
+    "servicios_30d": 7,
+    "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 3
+      },
+      {
+        "nombre": "Grua Gancho 2",
+        "servicios": 2
+      },
+      {
+        "nombre": "AGEX -  GRUAS",
+        "servicios": 1
+      },
+      {
+        "nombre": "Grua Gancho 1",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIA GRUAS MARIN",
+    "pr": "2",
+    "d": "RISARALDA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "PARQUEADERO JR DOSQUEBRADAS LA ROMELIA AL PIE DEL CEMENTERIO DE LA ROMELIA",
+    "t1": "321 8247812",
+    "t2": "3123338146",
+    "wa": "321 8247812-3123338146",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIA MK SAS",
+    "pr": "1",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "320 9895560",
+    "t2": "320 9894341",
+    "wa": "320 9895560 - 320 9894341",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIA ORIENTE",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "AUTOPISTA MEDELLIN BOGOTA KM 30 SECTOR DEL CRUCERO 200MTS INGRESANDO AL MUNICIPIO DE SAN VICENTE EN LA PRIMERA PUERTA A MANO DERECHA",
+    "t1": "311 7210427",
+    "t2": "311 7210427",
+    "wa": "311 7210427",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIA VIAL RT",
+    "pr": "3",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "310 2424660",
+    "t2": "310 2424660",
+    "wa": "310 2424660",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIA Y SERVICIOS PAR S.A.S.",
+    "pr": "3",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "3336435971",
+    "t2": "3336412929",
+    "wa": "3336435971 - 3336412929",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIA Y TRANSPORTES VALDES SAS",
+    "pr": "1",
+    "d": "MAGDALENA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "CL. 24 #23-110 SANTA MARTA MAGDALENA",
+    "t1": "313 5984048",
+    "t2": "3244093645",
+    "wa": "313 5984048",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIAS DEL EJE",
+    "pr": "2",
+    "d": "QUINDIO",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "3160516236",
+    "t2": "3167987441",
+    "wa": "3160516236-3167987441",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIAS Y GRUAS NACIONALES DE COLOMBIA S.A.S ( AGN)",
+    "pr": "1",
+    "d": "SANTANDER",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "315 3857442",
+    "t2": "-",
+    "wa": "315 3857442",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTICAR DEL EJE",
+    "pr": "2",
+    "d": "RISARALDA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "311 3904555",
+    "t2": "-",
+    "wa": "311 3904555",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTIGROUP COLOMBIA SAS",
+    "pr": "2",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3134661515",
+    "t2": "-",
+    "wa": "3134661515",
+    "servicios_30d": 12,
+    "conductores_30d": [
+      {
+        "nombre": "PRZ962 - ISAIAS BAEZ",
+        "servicios": 7
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 2
+      },
+      {
+        "nombre": "JHON CHAPARRO - JVK306",
+        "servicios": 1
+      },
+      {
+        "nombre": "OMAR GOMEZ - SMN871",
+        "servicios": 1
+      },
+      {
+        "nombre": "NUW649  - Alejandro Chaparro",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTIMOTOS",
+    "pr": "2",
+    "d": "RISARALDA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "CALLE 8 # 10 - 144 LA POPA",
+    "t1": "",
+    "t2": "-",
+    "wa": "",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISVEH J&H S.A.S",
+    "pr": "1",
+    "d": "BOLIVAR",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "POZON URB CIUDADELA DE LA PAZ BLOQUE B1 TORRE 3 APT 202",
+    "t1": "3244031440",
+    "t2": "3043912396",
+    "wa": "3043912396-3244031440-3011987668-3145302384",
+    "servicios_30d": 45,
+    "conductores_30d": [
+      {
+        "nombre": "EDILBER BUENDIA - BASE",
+        "servicios": 16
+      },
+      {
+        "nombre": "JOVANNI - NHR871-LIVIANO",
+        "servicios": 10
+      },
+      {
+        "nombre": "LEANDRO RODRÍGUEZ - BJK52B -  CT",
+        "servicios": 4
+      },
+      {
+        "nombre": "ANTONIO SUAREZ - LSX194 - PLANCHON",
+        "servicios": 4
+      },
+      {
+        "nombre": "Danei buendia -  CT",
+        "servicios": 4
+      },
+      {
+        "nombre": "Leonardo Celin",
+        "servicios": 3
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 2
+      },
+      {
+        "nombre": "ALEJANDRO SANTOYA - SCE519 - GANCHO",
+        "servicios": 2
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISVEH J&H S.A.S",
+    "pr": "1",
+    "d": "ATLANTICO",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3244031440",
+    "t2": "3043912396",
+    "wa": "3043912396-3244031440-3011987668-3145302384",
+    "servicios_30d": 45,
+    "conductores_30d": [
+      {
+        "nombre": "EDILBER BUENDIA - BASE",
+        "servicios": 16
+      },
+      {
+        "nombre": "JOVANNI - NHR871-LIVIANO",
+        "servicios": 10
+      },
+      {
+        "nombre": "LEANDRO RODRÍGUEZ - BJK52B -  CT",
+        "servicios": 4
+      },
+      {
+        "nombre": "ANTONIO SUAREZ - LSX194 - PLANCHON",
+        "servicios": 4
+      },
+      {
+        "nombre": "Danei buendia -  CT",
+        "servicios": 4
+      },
+      {
+        "nombre": "Leonardo Celin",
+        "servicios": 3
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 2
+      },
+      {
+        "nombre": "ALEJANDRO SANTOYA - SCE519 - GANCHO",
+        "servicios": 2
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASSI ASISTENCIA",
+    "pr": "3",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "317 4349662",
+    "t2": "317 4349662",
+    "wa": "317 4349662",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASSISLEGAL",
+    "pr": "-",
+    "d": "CUNDINAMARCA",
+    "gl": "NO",
+    "legal": "SI",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "-",
+    "t2": "-",
+    "wa": "-",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASSIST GRUAS CARTAGO SAS",
+    "pr": "1",
+    "d": "VALLE DEL CAUCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "3136131783",
+    "t2": "-",
+    "wa": "3136131783",
+    "servicios_30d": 9,
+    "conductores_30d": [
+      {
+        "nombre": "Gustavo Adolfo Agudelo Salas - SXG 253",
+        "servicios": 4
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 3
+      },
+      {
+        "nombre": "JAIRO DUQUE CASTAÑO-HLD307",
+        "servicios": 1
+      },
+      {
+        "nombre": "Julian Adolfo Osorio Franco - JYN 651",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASSISTRANS MA S.A.S.",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "CRA 62# 25-32 BARRIO NUEVO BELLO",
+    "t1": "300 4965559",
+    "t2": "-",
+    "wa": "300 4965559",
+    "servicios_30d": 8,
+    "conductores_30d": [
+      {
+        "nombre": "CRISTIAN CAMILO ALZATE",
+        "servicios": 5
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 1
+      },
+      {
+        "nombre": "Edgar Muñoz -  FQK302",
+        "servicios": 1
+      },
+      {
+        "nombre": "Jhon Ortega   -LRU600",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ATLAS ASISTENCIA VIAL S.A.S",
+    "pr": "2",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "311 3569350",
+    "t2": "301 1475542",
+    "wa": "311 3569350-301 1475542",
+    "servicios_30d": 32,
+    "conductores_30d": [
+      {
+        "nombre": "FREDY QUINTERO -  LKO044",
+        "servicios": 8
+      },
+      {
+        "nombre": "MIGUEL ARDILA",
+        "servicios": 6
+      },
+      {
+        "nombre": "LUIS BAENA",
+        "servicios": 6
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 4
+      },
+      {
+        "nombre": "CESAR ESCOBAR",
+        "servicios": 3
+      },
+      {
+        "nombre": "ALBEIRO GIRALDO",
+        "servicios": 2
+      },
+      {
+        "nombre": "JOSE  URQUIJO  - UZE71F",
+        "servicios": 1
+      },
+      {
+        "nombre": "JAIME SALDARRIAGA",
+        "servicios": 1
+      },
+      {
+        "nombre": "STIVEN DAVILA",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ATO GROUP S.A.S",
+    "pr": "2",
+    "d": "ATLANTICO",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "AVENIDA CIRCUNVALAR FRENTE AL PARQUE INDUSTRIAL ZONA EXPRESS",
+    "t1": "300 7382769",
+    "t2": "-",
+    "wa": "300 7382769",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTO ASISTENCIA COLOMBIA SAS",
+    "pr": "1",
+    "d": "VALLE DEL CAUCA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "NO",
+    "dir": "-",
+    "t1": "315 5023569",
+    "t2": "315 5346337",
+    "wa": "315 5346337-315 5023569",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTO GRUAS EXPRESS SAS-PALMIRA",
+    "pr": "2",
+    "d": "VALLE DEL CAUCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "311 2451361",
+    "t2": "-",
+    "wa": "311 2451361",
+    "servicios_30d": 7,
+    "conductores_30d": [
+      {
+        "nombre": "WILLIAM ALEJANDRO SANCHEZ-LMM 945",
+        "servicios": 3
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 2
+      },
+      {
+        "nombre": "JHON PINEDA-SWO 821",
+        "servicios": 1
+      },
+      {
+        "nombre": "ANDRES TORRES -BNX 328",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTO GRUAS EXPRESS SAS-PALMIRA",
+    "pr": "2",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "CLL 63#93 89 ALAMOS-BOGOTA",
+    "t1": "311 2451361",
+    "t2": "-",
+    "wa": "311 2451361",
+    "servicios_30d": 7,
+    "conductores_30d": [
+      {
+        "nombre": "WILLIAM ALEJANDRO SANCHEZ-LMM 945",
+        "servicios": 3
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 2
+      },
+      {
+        "nombre": "JHON PINEDA-SWO 821",
+        "servicios": 1
+      },
+      {
+        "nombre": "ANDRES TORRES -BNX 328",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTO GRUAS GARCIA SAS",
+    "pr": "1",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "KM 10 VIA UBATE CHIQUINQUIRA PARQUEADERO AUTOGRUAS GARCIA",
+    "t1": "310 4884240",
+    "t2": "-",
+    "wa": "310 4884240",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTO GRUAS JR SAS",
+    "pr": "1",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "CARRERA 111 CON CLL 171 - UBICADA EN LA CONEJERA DE SUBA",
+    "t1": "320 4363560",
+    "t2": "-",
+    "wa": "320 4363560",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTO GRUAS LA SAS",
+    "pr": "2",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "314 2574913",
+    "t2": "-",
+    "wa": "314 2574913",
+    "servicios_30d": 9,
+    "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 4
+      },
+      {
+        "nombre": "Eduard Estiven Tenjica Poveda -  JTX526",
+        "servicios": 3
+      },
+      {
+        "nombre": "Johan Steven Camargo Padilla -  KSO697",
+        "servicios": 2
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTO GRUAS R&R SAS",
+    "pr": "2",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "320 2246986",
+    "t2": "-",
+    "wa": "320 2246986",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTO RAMOS SAS",
+    "pr": "2",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "311 2578717",
+    "t2": "-",
+    "wa": "311 2578717",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOCAMIONES JR SAS",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "CR 30 A 67 119",
+    "t1": "321 8932403",
+    "t2": "310 2240853",
+    "wa": "321 8932403- 310 2240853",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOCARGA PRO S.A.S",
+    "pr": "3",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3112288793",
+    "t2": "300 9781623",
+    "wa": "3112288793-300 9781623",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOGRUAS ANTIOQUIA S.A.S",
+    "pr": "1",
+    "d": "BOLIVAR",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "312 6251171",
+    "t2": "-",
+    "wa": "312 6251171",
+    "servicios_30d": 6,
+    "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 6
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOGRUAS CAQUEZA R2 SAS",
+    "pr": "3",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "CARRERA 3 # 3 - 42 CHIPAQUE",
+    "t1": "321 9691650",
+    "t2": "-",
+    "wa": "321 9691650",
+    "servicios_30d": 7,
+    "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 3
+      },
+      {
+        "nombre": "John sebastian Heyn huerfano -  SVB733",
+        "servicios": 1
+      },
+      {
+        "nombre": "Edwar fabian alvarez -  Wpq013",
+        "servicios": 1
+      },
+      {
+        "nombre": "ORLANDO CARRASCO SWM 283",
+        "servicios": 1
+      },
+      {
+        "nombre": "Daniel felipe rojas guavita -  NBP808",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOGRUAS FENIX",
+    "pr": "1",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "310 2474326",
+    "t2": "314 8196798",
+    "wa": "310 2474326-314 8196798",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOGRUAS LA SEXTA",
+    "pr": "3",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3125055999",
+    "t2": "-",
+    "wa": "3125055999",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOGRUAS MELGAR SAS",
+    "pr": "1",
+    "d": "TOLIMA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "323 4876738",
+    "t2": "-",
+    "wa": "323 4876738",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOGRUAS SESQUILE SAS",
+    "pr": "2",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "314 4744538",
+    "t2": "-",
+    "wa": "314 4744538",
+    "servicios_30d": 2,
+    "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 2
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOGRUAS Y FRENOS RAMIREZ",
+    "pr": "2",
+    "d": "BOYACA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "321 4597492",
+    "t2": "-",
+    "wa": "321 4597492",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUXIGRUAS SAS",
+    "pr": "2",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "311 5035158",
+    "t2": "-",
+    "wa": "311 5035158",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AVC ASISTENCIA",
+    "pr": "2",
+    "d": "ATLANTICO",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "301 6267180",
+    "t2": "-",
+    "wa": "301 6267180",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AVC ASISTENCIA",
+    "pr": "3",
+    "d": "CESAR",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "301 6267180",
+    "t2": "-",
+    "wa": "301 6267180",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AUTOGRUAS TRANSPORTE PRONTO SAS",
+    "pr": "2",
+    "d": "BOYACA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "VEREDA LA CABAÑA TUNJA KILOMETRO 1 VIA TUNJA BOGOTA",
+    "t1": "311 4716017",
+    "t2": "-",
+    "wa": "311 4716017",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AYC CONSULTORES LOGISTICOS",
+    "pr": "2",
+    "d": "BOGOTA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "316 7434569",
+    "t2": "-",
+    "wa": "316 7434569",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "AYUDA A TIEMPO S.A.S",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "310 5151465",
+    "t2": "314 3216864",
+    "wa": "310 5151465- 314 3216864",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "BATERIAS THOMAS MED S.A.S. (GRUA MOTO)",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "322 6578629",
+    "t2": "-",
+    "wa": "322 6578629",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "BENITEZ NEGOCIOS SAS",
+    "pr": "1",
+    "d": "SANTANDER",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "CRA 2 No. 2 - 58 INT 05ZN INDUSTRIAL CHIMITA",
+    "t1": "316 3867219",
+    "t2": "-",
+    "wa": "316 3867219",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "BESTCAR S.A.S",
+    "pr": "1",
+    "d": "TOLIMA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "322 2424544",
+    "t2": "324 4841535",
+    "wa": "322 2424544-324 4841535",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "BIA S.A.S JULIA",
+    "pr": "1",
+    "d": "BOGOTA",
+    "gl": "NO",
+    "legal": "SI",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "324 4057413",
+    "t2": "301 4605220",
+    "wa": "324 4057413- 301 4605220",
+    "servicios_30d": 11,
+    "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 5
+      },
+      {
+        "nombre": "Ana Milena Lasso Aldana - ZFR65G",
+        "servicios": 4
+      },
+      {
+        "nombre": "Julia Carolina Valderrama Suárez - MCN415",
+        "servicios": 1
+      },
+      {
+        "nombre": "BARRETO JATIB KAUSMAN AMIN",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "BLUE ASSIST SAS",
+    "pr": "2",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "315 0024575",
+    "t2": "-",
+    "wa": "315 0024575",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CAG",
+    "pr": "2",
+    "d": "VALLE DEL CAUCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "310 4728645",
+    "t2": "-",
+    "wa": "310 4728645",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CAMACHO VILLALBA Y CARDONA S.A.S - TE CONDUZCO",
+    "pr": "1",
+    "d": "BOLIVAR",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "302 4414885",
+    "t2": "-",
+    "wa": "302 4414885",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CARIBE ASESORES LEGALES S.A.S.",
+    "pr": "2",
+    "d": "ATLANTICO",
+    "gl": "NO",
+    "legal": "SI",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3228960877",
+    "t2": "-",
+    "wa": "3228960877",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CARREÑO & ROCHA GRUAS Y TRANSPORTES SOCIEDAD POR ACCIONES SIMPLIFICADA ( SOGAMOSO)",
+    "pr": "1",
+    "d": "BOYACA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "311 8090863",
+    "t2": "-",
+    "wa": "311 8090863",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CARS SERVICES SERVICIOS DE ASISTENCIA EN CARRETERA S.A.S",
+    "pr": "1",
+    "d": "BOYACA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3112038081",
+    "t2": "321 4606632",
+    "wa": "3112038081-321 4606632",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CENTRAL LOGISTICA URBANA",
+    "pr": "1",
+    "d": "NORTE DE SANTANDER",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "NO",
+    "dir": "-",
+    "t1": "350 6191383",
+    "t2": "324 4830037",
+    "wa": "350 6191383-324 4830037",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CENTRAL LOGISTICA URBANA",
+    "pr": "1",
+    "d": "ATLANTICO",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "NO",
+    "dir": "-",
+    "t1": "350 6191383",
+    "t2": "324 4830037",
+    "wa": "350 6191383-324 4830037",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CERRAJERIA METROPOLIS S.A.S",
+    "pr": "3",
+    "d": "CUNDINAMARCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "NO",
+    "dir": "-",
+    "t1": "312 5789413",
+    "t2": "-",
+    "wa": "312 5789413",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CG GARZON SAS",
+    "pr": "1",
+    "d": "ATLANTICO",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "CALLE 55 43- 34 BOSTON- BARRANQUILLA",
+    "t1": "324 4826015",
+    "t2": "3244826017",
+    "wa": "324 4826015",
+    "servicios_30d": 34,
+    "conductores_30d": [
+      {
+        "nombre": "CG GARZON SAS",
+        "servicios": 20
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 14
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CMM TRANSPORTE EMPRESARIAL SAS",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "CARRERA 70 N 1 -105 BELEN",
+    "t1": "312 6823238",
+    "t2": "-",
+    "wa": "312 6823238",
+    "servicios_30d": 10,
+    "conductores_30d": [
+      {
+        "nombre": "Adrian Esteban Zapata Valencia - LKM218",
+        "servicios": 5
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 5
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA LTDA",
+    "pr": "1",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "CRA 8 #6-17",
+    "t1": "321 7654576",
+    "t2": "301 6332788",
+    "wa": "321 7654576- 301 6332788",
+    "servicios_30d": 77,
+    "conductores_30d": [
+      {
+        "nombre": "LA OCTAVA  - JUY046",
+        "servicios": 18
+      },
+      {
+        "nombre": "LA OCTAVA  - LLQ246",
+        "servicios": 18
+      },
+      {
+        "nombre": "LA OCTAVA -JUY045",
+        "servicios": 9
+      },
+      {
+        "nombre": "LA OCTAVA -  WGY343",
+        "servicios": 9
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 9
+      },
+      {
+        "nombre": "LA OCTAVA  - TDK163",
+        "servicios": 5
+      },
+      {
+        "nombre": "LA OCTAVA  -  TLN167",
+        "servicios": 4
+      },
+      {
+        "nombre": "LA OCTAVA  -  LLQ247",
+        "servicios": 4
+      },
+      {
+        "nombre": "LA OCTAVA  - UFY482",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CON ARMANI SAS",
+    "pr": "1",
+    "d": "VALLE DEL CAUCA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "NO",
+    "dir": "-",
+    "t1": "302 4474524",
+    "t2": "-",
+    "wa": "302 4474524",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "CONDUCTORES ELEGIDOS DEL VALLE S.A.S.",
+    "pr": "3",
+    "d": "VALLE DEL CAUCA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "320 6527710",
+    "t2": "-",
+    "wa": "320 6527710",
+    "servicios_30d": 9,
+    "conductores_30d": [
+      {
+        "nombre": "cristiam roa - UBU127",
+        "servicios": 8
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "COOPERATIVA MULTIACTIVA DE TAXISTAS Y TRANSPORTADORES UNIDOS (COTAXI)",
+    "pr": "1",
+    "d": "BUCARAMANGA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "310 5886895",
+    "t2": "-",
+    "wa": "310 5886895",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "D RIOS",
+    "pr": "3",
+    "d": "RISARALDA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "AVENIDA LAS AMERICAS CALLE 63 19-50 PEREIRA RISARALDA",
+    "t1": "320 6605484",
+    "t2": "-",
+    "wa": "320 6605484",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ASISTENCIA G",
+    "pr": "2",
+    "d": "SANTANDER",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "300 3480891",
+    "t2": "-",
+    "wa": "300 3480891",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "DRIVER VIP",
+    "pr": "3",
+    "d": "BOGOTA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "304 5745629",
+    "t2": "-",
+    "wa": "304 5745629",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "E.D.A ASISTENCIA",
+    "pr": "1",
+    "d": "BOGOTA",
+    "gl": "NO",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "NO",
+    "dir": "-",
+    "t1": "305 8513999",
+    "t2": "-",
+    "wa": "312 4764438",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "EFISERVICIOS DEL CAFE S.A.S",
+    "pr": "2",
+    "d": "QUINDIO",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "SI",
+    "dir": "-",
+    "t1": "316 6173838",
+    "t2": "-",
+    "wa": "316 6173838",
+    "servicios_30d": 7,
+    "conductores_30d": [
+      {
+        "nombre": "EFISERVICIOS DEL CAFE S.A.S",
+        "servicios": 5
+      },
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 2
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "ELECTRO GRUAS Y TRANSPORTES SX S.A.S",
+    "pr": "2",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "321 4802331",
+    "t2": "-",
+    "wa": "321 4802331",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "FIRMA DE ABOGADOS JACKELYN ROMERO",
+    "pr": "2",
+    "d": "VALLE DEL CAUCA",
+    "gl": "NO",
+    "legal": "SI",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "317 6921134",
+    "t2": "-",
+    "wa": "317 6921134",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "FLASH ASISTENCIA VIAL & MENSAJERIA S.A.S.",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "SI",
+    "de": "SI",
+    "dir": "-",
+    "t1": "302 7699992",
+    "t2": "321 7767338",
+    "wa": "302 7699992-321 7767338",
+    "servicios_30d": 69,
+    "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 36
+      },
+      {
+        "nombre": "JHONATAN ARIZA-LKQ038 -3027699992",
+        "servicios": 14
+      },
+      {
+        "nombre": "MARLON AGUDELO-  LWM88H - 3024052020",
+        "servicios": 5
+      },
+      {
+        "nombre": "EDWIN ORJUELA -",
+        "servicios": 5
+      },
+      {
+        "nombre": "HAIBERT VELANDIA",
+        "servicios": 4
+      },
+      {
+        "nombre": "eder alberto alvarez",
+        "servicios": 2
+      },
+      {
+        "nombre": "FABIAN ENRIQUE SIERRA-LVE51B-3145510194",
+        "servicios": 2
+      },
+      {
+        "nombre": "JOSE LUIS NAVARRO-KHF302-3004485806",
+        "servicios": 1
+      }
+    ],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "FRANCO & FRANCO GRUPO ASESOR JURIDICO S.A.S",
+    "pr": "3",
+    "d": "QUINDIO",
+    "gl": "NO",
+    "legal": "SI",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "3183060116",
+    "t2": "-",
+    "wa": "3183060116",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "G 10 SOLUCIONES",
+    "pr": "2",
+    "d": "CAUCA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "SI",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "318 7354414",
+    "t2": "-",
+    "wa": "318 7354414",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "G&M ASITENCIA SAS",
+    "pr": "3",
+    "d": "BOGOTA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "NO",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "-",
+    "t1": "305 4556734",
+    "t2": "-",
+    "wa": "305 4556734",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "G&T INGENIERIA Y CONSTRUCCION S.A.S.",
+    "pr": "1",
+    "d": "SUCRE",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "CARRERA 26 34 41 BRR SAN JUAN",
+    "t1": "300 5318642",
+    "t2": "-",
+    "wa": "300 5318642",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  },
+  {
+    "n": "GLOBAL TRANSPORT GROUP",
+    "pr": "1",
+    "d": "ANTIOQUIA",
+    "gl": "SI",
+    "legal": "NO",
+    "ct": "NO",
+    "cu": "SI",
+    "ce": "NO",
+    "de": "NO",
+    "dir": "CLL 46 # 69 - 192 COPACABANA",
+    "t1": "3113154417",
+    "t2": "-",
+    "wa": "3113154417",
+    "servicios_30d": 0,
+    "conductores_30d": [],
+    "_updated_at": "2026-07-21 01:41"
+  }
+]

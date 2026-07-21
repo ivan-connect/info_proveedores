@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buscador de Proveedores</title>
+<style>
+  :root{
+    --tier1:#f15b2b;
+    --tier2:#0088FE;
+    --tier3:#ffb000;
+    --tierx:#8a8a8a;
+    --bg:#f4f5f7;
+    --card:#ffffff;
+    --border:#e2e4e8;
+    --text:#1f2430;
+    --muted:#6b7280;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+  }
+  header{
+    background:#111827;
+    color:#fff;
+    padding:24px 32px;
+  }
+  header h1{margin:0 0 4px;font-size:22px;}
+  header p{margin:0;color:#9aa1b1;font-size:14px;}
+  .badge-preview{
+    display:inline-block;
+    margin-top:10px;
+    background:#3b2f0e;
+    color:#ffcf6b;
+    border:1px solid #6b4f10;
+    padding:4px 10px;
+    border-radius:6px;
+    font-size:12px;
+  }
+  .container{max-width:1100px;margin:0 auto;padding:24px 16px 60px;}
+  .filters{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-bottom:24px;
+  }
+  @media(max-width:640px){.filters{grid-template-columns:1fr;}}
+  .field label{
+    display:block;
+    font-size:12px;
+    font-weight:600;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    margin-bottom:6px;
+  }
+  select, input[type=text]{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    font-size:14px;
+    background:#fff;
+  }
+  .services{grid-column:1/-1;}
+  .services .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:6px 14px;
+    font-size:13px;
+    cursor:pointer;
+    background:#fff;
+    user-select:none;
+  }
+  .chip.active{
+    background:#111827;
+    color:#fff;
+    border-color:#111827;
+  }
+  .summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+    font-size:14px;
+    color:var(--muted);
+  }
+  .sort-select{width:auto;padding:6px 10px;}
+  .grid{display:flex;flex-direction:column;gap:12px;}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left-width:5px;
+    border-radius:10px;
+    padding:16px 18px;
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .card.p1{border-left-color:var(--tier1);}
+  .card.p2{border-left-color:var(--tier2);}
+  .card.p3{border-left-color:var(--tier3);}
+  .card.px{border-left-color:var(--tierx);}
+  .card-main{flex:1;min-width:240px;}
+  .card-name{font-size:16px;font-weight:600;margin:0 0 4px;}
+  .card-dept{font-size:13px;color:var(--muted);margin:0 0 10px;}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{
+    font-size:11px;
+    padding:3px 8px;
+    border-radius:5px;
+    background:#eef0f4;
+    color:#444;
+    border:1px solid #dfe2e8;
+  }
+  .tag.on{background:#e7f3ee;color:#0d6b45;border-color:#bfe3d1;}
+  .prio-pill{
+    align-self:flex-start;
+    font-size:12px;
+    font-weight:700;
+    color:#fff;
+    padding:4px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .prio-pill.p1{background:var(--tier1);}
+  .prio-pill.p2{background:var(--tier2);}
+  .prio-pill.p3{background:var(--tier3);}
+  .prio-pill.px{background:var(--tierx);}
+  .card-contact{
+    min-width:200px;
+    font-size:13px;
+    color:var(--text);
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    justify-content:center;
+  }
+  .card-contact a{color:#0d6b45;text-decoration:none;font-weight:600;}
+  .metric-btn{
+    font-size:12px;
+    font-weight:600;
+    color:#111827;
+    background:#f1f2f5;
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:5px 10px;
+    cursor:pointer;
+    text-align:left;
+  }
+  .metric-btn:hover{background:#e7e9ee;}
+  .metric-btn.no-data{color:var(--muted);cursor:default;}
+  .metric-btn.no-data:hover{background:#f1f2f5;}
+  .drivers-panel{
+    display:none;
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed var(--border);
+    width:100%;
+    flex-basis:100%;
+  }
+  .drivers-panel.open{display:block;}
+  .drivers-panel table{width:100%;border-collapse:collapse;font-size:13px;}
+  .drivers-panel th{
+    text-align:left;
+    color:var(--muted);
+    font-weight:600;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    padding:4px 6px;
+    border-bottom:1px solid var(--border);
+  }
+  .drivers-panel td{padding:4px 6px;border-bottom:1px solid #f0f1f4;}
+  .empty{
+    text-align:center;
+    padding:60px 20px;
+    color:var(--muted);
+  }
+  .note{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:30px;
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Buscador de Proveedores</h1>
+  <p>Filtra por departamento y servicio para encontrar el proveedor idóneo. Ordenado por prioridad.</p>
+  <span class="badge-preview" id="lastUpdated">Cargando fecha de actualización…</span>
+</header>
+
+<div class="container">
+  <div class="filters">
+    <div class="field">
+      <label for="dept">Departamento</label>
+      <select id="dept">
+        <option value="">Todos los departamentos</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="sort">Ordenar por</label>
+      <select id="sort" class="sort-select">
+        <option value="prio">Prioridad (mejor primero)</option>
+        <option value="servicios">Servicios realizados (30 días)</option>
+        <option value="name">Nombre (A-Z)</option>
+      </select>
+    </div>
+    <div class="field services">
+      <label>Servicio requerido</label>
+      <div class="chips" id="serviceChips">
+        <div class="chip" data-key="gl">Grúa liviana</div>
+        <div class="chip" data-key="legal">Legal</div>
+        <div class="chip" data-key="ct">CT</div>
+        <div class="chip" data-key="cu">Custodia</div>
+        <div class="chip" data-key="ce">CE</div>
+        <div class="chip" data-key="de">Desplazamiento</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <span id="resultCount">— resultados</span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="emptyState" style="display:none;">No hay proveedores que cumplan con los filtros seleccionados.</div>
+
+  <p class="note">Los datos se actualizan automáticamente todos los días a las 5:00 AM (hora Bogotá) mediante un flujo de n8n conectado a Google Sheets.</p>
+</div>
+
+<script>
+let PROVIDERS = [];
+
+const serviceLabels = {gl:'Grúa liviana', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
+const activeServices = new Set();
+
+const deptSelect = document.getElementById('dept');
+
+document.querySelectorAll('.chip').forEach(chip=>{
+  chip.addEventListener('click', ()=>{
+    const key = chip.dataset.key;
+    if(activeServices.has(key)){ activeServices.delete(key); chip.classList.remove('active'); }
+    else { activeServices.add(key); chip.classList.add('active'); }
+    render();
+  });
+});
+
+deptSelect.addEventListener('change', render);
+document.getElementById('sort').addEventListener('change', render);
+
+function prioClass(pr){
+  if(pr==='1') return 'p1';
+  if(pr==='2') return 'p2';
+  if(pr==='3') return 'p3';
+  return 'px';
+}
+function prioLabel(pr){
+  if(pr==='1') return 'Prioridad 1';
+  if(pr==='2') return 'Prioridad 2';
+  if(pr==='3') return 'Prioridad 3';
+  return 'Sin prioridad asignada';
+}
+
+function render(){
+  const dept = deptSelect.value;
+  const sortBy = document.getElementById('sort').value;
+
+  let list = PROVIDERS.filter(p=>{
+    if(dept && p.d !== dept) return false;
+    for(const key of activeServices){
+      if(p[key] !== 'SI') return false;
+    }
+    return true;
+  });
+
+  list.sort((a,b)=>{
+    if(sortBy==='name') return a.n.localeCompare(b.n);
+    if(sortBy==='servicios') return (b.servicios_30d||0) - (a.servicios_30d||0);
+    const rank = {'1':1,'2':2,'3':3,'-':4};
+    const ra = rank[a.pr] || 4, rb = rank[b.pr] || 4;
+    if(ra !== rb) return ra - rb;
+    return a.n.localeCompare(b.n);
+  });
+
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  document.getElementById('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}`;
+  document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
+
+  list.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = `card ${prioClass(p.pr)}`;
+
+    const tagsHtml = Object.keys(serviceLabels).map(key=>{
+      const on = p[key] === 'SI';
+      return `<span class="tag ${on?'on':''}">${serviceLabels[key]}</span>`;
+    }).join('');
+
+    const wa = (p.wa||'').split('-')[0].trim().replace(/\s+/g,'');
+    const waLink = wa && wa !== '-' ? `<a href="https://wa.me/57${wa}" target="_blank">WhatsApp: ${p.wa}</a>` : '';
+    const tel1 = p.t1 && p.t1 !== '-' ? `<span>Tel 1: ${p.t1}</span>` : '';
+    const tel2 = p.t2 && p.t2 !== '-' ? `<span>Tel 2: ${p.t2}</span>` : '';
+
+    const hasMetrics = p.servicios_30d > 0;
+    const metricLabel = hasMetrics
+      ? `${p.servicios_30d} servicio${p.servicios_30d===1?'':'s'} (30 días) ▾`
+      : `Sin datos de servicios (30 días)`;
+    const panelId = `drivers-${Math.random().toString(36).slice(2)}`;
+
+    card.innerHTML = `
+      <div class="card-main">
+        <p class="card-name">${p.n}</p>
+        <p class="card-dept">${p.d}${p.dir && p.dir !== '-' ? ' · ' + p.dir : ''}</p>
+        <div class="tags">${tagsHtml}</div>
+        <div class="drivers-panel" id="${panelId}">
+          ${hasMetrics ? `
+            <table>
+              <thead><tr><th>Conductor</th><th>Servicios (30d)</th></tr></thead>
+              <tbody>
+                ${p.conductores_30d.map(c=>`<tr><td>${c.nombre}</td><td>${c.servicios}</td></tr>`).join('')}
+              </tbody>
+            </table>
+          ` : ''}
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end;">
+        <span class="prio-pill ${prioClass(p.pr)}">${prioLabel(p.pr)}</span>
+        <button class="metric-btn ${hasMetrics?'':'no-data'}" ${hasMetrics ? `onclick="togglePanel('${panelId}', this)"` : 'disabled'}>${metricLabel}</button>
+        <div class="card-contact">
+          ${tel1}
+          ${tel2}
+          ${waLink}
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function togglePanel(id, btn){
+  const panel = document.getElementById(id);
+  const open = panel.classList.toggle('open');
+  btn.textContent = btn.textContent.replace(open ? '▾' : '▴', open ? '▴' : '▾');
+}
+
+async function loadData(){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '<div class="empty">Cargando proveedores…</div>';
+  try{
+    const res = await fetch('./providers.json?_=' + Date.now());
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    PROVIDERS = await res.json();
+
+    const depts = [...new Set(PROVIDERS.map(p=>p.d).filter(Boolean))].sort();
+    depts.forEach(d=>{
+      const opt = document.createElement('option');
+      opt.value = d; opt.textContent = d;
+      deptSelect.appendChild(opt);
+    });
+
+    if(PROVIDERS.length && PROVIDERS[0]._updated_at){
+      document.getElementById('lastUpdated').textContent = 'Datos actualizados: ' + PROVIDERS[0]._updated_at;
+    }
+
+    render();
+  }catch(err){
+    grid.innerHTML = `<div class="empty">No se pudo cargar providers.json (${err.message}). Verifica que el archivo exista en este mismo repositorio/carpeta.</div>`;
+    document.getElementById('resultCount').textContent = '—';
+  }
+}
+
+loadData();
+</script>
+</body>
+</html>
