@@ -312,6 +312,14 @@ function prioLabel(pr){
 function render(){
   const dept = deptSelect.value;
   const sortBy = document.getElementById('sort').value;
+  const grid = document.getElementById('grid');
+
+  if(!dept){
+    grid.innerHTML = '';
+    document.getElementById('resultCount').textContent = 'Selecciona un departamento para ver proveedores';
+    document.getElementById('emptyState').style.display = 'none';
+    return;
+  }
 
   let list = PROVIDERS.filter(p=>{
     if(dept && p.d !== dept) return false;
@@ -330,10 +338,9 @@ function render(){
     return a.n.localeCompare(b.n);
   });
 
-  const grid = document.getElementById('grid');
-  grid.innerHTML = '';
   document.getElementById('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}`;
   document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
+  grid.innerHTML = '';
 
   list.forEach(p=>{
     const card = document.createElement('div');
