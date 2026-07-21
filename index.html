@@ -27,18 +27,24 @@
     background:#111827;
     color:#fff;
     padding:18px 32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
   }
   header h1{margin:0 0 4px;font-size:20px;}
   header p{margin:0;color:#9aa1b1;font-size:13px;}
   .badge-preview{
     display:inline-block;
-    margin-top:8px;
+    flex-shrink:0;
     background:#3b2f0e;
     color:#ffcf6b;
     border:1px solid #6b4f10;
-    padding:3px 9px;
+    padding:5px 12px;
     border-radius:6px;
-    font-size:11px;
+    font-size:12px;
+    white-space:nowrap;
   }
   .container{max-width:1100px;margin:0 auto;padding:24px 16px 60px;}
   .filters{
@@ -217,8 +223,10 @@
 </head>
 <body>
 <header>
-  <h1>Buscador de Proveedores</h1>
-  <p>Filtra por departamento y servicio para encontrar el proveedor idóneo. Ordenado por prioridad.</p>
+  <div>
+    <h1>Buscador de Proveedores</h1>
+    <p>Filtra por departamento y servicio para encontrar el proveedor idóneo. Ordenado por prioridad.</p>
+  </div>
   <span class="badge-preview" id="lastUpdated">Cargando fecha de actualización…</span>
 </header>
 
