@@ -221,6 +221,35 @@
     border-bottom:1px solid var(--border);
   }
   .drivers-panel td{padding:4px 6px;border-bottom:1px solid #f0f1f4;}
+  .arrival-block{
+    margin-bottom:12px;
+    padding-bottom:12px;
+    border-bottom:1px dashed var(--border);
+  }
+  .arrival-title{
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    margin:0 0 6px;
+  }
+  .arrival-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .arrival-chip{
+    background:#F8F9FB;
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:6px 10px;
+    font-size:12px;
+    min-width:110px;
+  }
+  .arrival-chip .label{color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:.03em;display:block;}
+  .arrival-chip .value{font-weight:700;color:var(--navy);font-size:14px;}
+  .arrival-chip .n{color:var(--muted);font-size:10.5px;}
   .empty{
     text-align:center;
     padding:60px 20px;
@@ -371,8 +400,29 @@ function render(){
     const tel2 = p.t2 && p.t2 !== '-' ? `<span>Tel 2: ${p.t2}</span>` : '';
 
     const hasMetrics = p.servicios_30d > 0;
-    const metricLabel = hasMetrics
-      ? `${p.servicios_30d} servicio${p.servicios_30d===1?'':'s'} (30d) ▾`
+    const arribo = p.arribo_30d || {};
+    const hasArribo = Object.keys(arribo).length > 0;
+    const hasPanelContent = hasMetrics || hasArribo;
+
+    const arrivalLabels = {grua:'Grúa (avería/colisión)', jumpstart:'Pasa corriente', flattire:'Llanta baja', locksmith:'Cerrajería'};
+    const arrivalOrder = ['grua','jumpstart','flattire','locksmith'];
+    const arrivalHtml = hasArribo ? `
+      <div class="arrival-block">
+        <p class="arrival-title">Tiempo promedio de arribo · no programados (30d)</p>
+        <div class="arrival-grid">
+          ${arrivalOrder.filter(k=>arribo[k]).map(k=>`
+            <div class="arrival-chip">
+              <span class="label">${arrivalLabels[k]}</span>
+              <span class="value">${Math.round(arribo[k].promedio_min)} min</span>
+              <span class="n">(${arribo[k].n} servicio${arribo[k].n===1?'':'s'})</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : '';
+
+    const metricLabel = hasPanelContent
+      ? `Ver métricas (30d) ▾`
       : `Sin datos (30d)`;
     const panelId = `drivers-${Math.random().toString(36).slice(2)}`;
 
@@ -389,7 +439,9 @@ function render(){
           </div>
           <div class="tags">${tagsHtml}</div>
           <div class="drivers-panel" id="${panelId}">
+            ${arrivalHtml}
             ${hasMetrics ? `
+              <p class="arrival-title">${p.servicios_30d} servicio${p.servicios_30d===1?'':'s'} finalizado${p.servicios_30d===1?'':'s'} (30d) por conductor</p>
               <table>
                 <thead><tr><th>Conductor</th><th>Servicios (30d)</th></tr></thead>
                 <tbody>
@@ -400,7 +452,7 @@ function render(){
           </div>
         </div>
         <div class="card-side">
-          <button class="metric-btn ${hasMetrics?'':'no-data'}" ${hasMetrics ? `onclick="togglePanel('${panelId}', this)"` : 'disabled'}>${metricLabel}</button>
+          <button class="metric-btn ${hasPanelContent?'':'no-data'}" ${hasPanelContent ? `onclick="togglePanel('${panelId}', this)"` : 'disabled'}>${metricLabel}</button>
           <div class="card-contact">${tel1}${tel2}${waLink}</div>
         </div>
       </div>
