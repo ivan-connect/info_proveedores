@@ -299,6 +299,7 @@
       <label>Servicio</label>
       <div class="chips" id="serviceChips">
         <div class="chip" data-key="gl">Grúa liviana</div>
+        <div class="chip" data-key="gancho">Gancho</div>
         <div class="chip" data-key="legal">Legal</div>
         <div class="chip" data-key="ct">CT</div>
         <div class="chip" data-key="cu">Custodia</div>
@@ -321,7 +322,7 @@
 <script>
 let PROVIDERS = [];
 
-const serviceLabels = {gl:'Grúa liviana', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
+const serviceLabels = {gl:'Grúa liviana', gancho:'Gancho', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
 const activeServices = new Set();
 
 const deptSelect = document.getElementById('dept');
@@ -392,7 +393,7 @@ function render(){
     const tagsHtml = Object.keys(serviceLabels).map(key=>{
       const on = p[key] === 'SI';
       return `<span class="tag ${on?'on':''}">${serviceLabels[key]}</span>`;
-    }).join('');
+    }).join('') + (p.tiene_gruas ? `<span class="tag on">${p.capacidad_gruas} grúa${p.capacidad_gruas===1?'':'s'} propia${p.capacidad_gruas===1?'':'s'}</span>` : '');
 
     const wa = (p.wa||'').split('-')[0].trim().replace(/\s+/g,'');
     const waLink = wa && wa !== '-' ? `<a href="https://wa.me/57${wa}" target="_blank">WhatsApp: ${p.wa}</a>` : '';
@@ -435,7 +436,7 @@ function render(){
         <div class="card-main">
           <div class="card-top">
             <span class="card-name">${p.n}</span>
-            <span class="card-dept">${p.d}${p.dir && p.dir !== '-' ? ' · ' + p.dir : ''}</span>
+            <span class="card-dept">${p.d}${p.ciudad ? ' · ' + p.ciudad : ''}${p.dir && p.dir !== '-' ? ' · ' + p.dir : ''}</span>
           </div>
           <div class="tags">${tagsHtml}</div>
           <div class="drivers-panel" id="${panelId}">
