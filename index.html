@@ -280,11 +280,14 @@
     </div>
     <div class="divider"></div>
     <div class="field">
-      <label for="dept">Departamento</label>
-      <select id="dept">
-        <option value="">Todos los departamentos</option>
-      </select>
+      <label for="origen">Ciudad origen *</label>
+      <input type="text" id="origen" list="ciudadesList" placeholder="Ej. Medellín" style="min-width:180px;">
     </div>
+    <div class="field">
+      <label for="destino">Ciudad destino</label>
+      <input type="text" id="destino" list="ciudadesList" placeholder="Opcional" style="min-width:180px;">
+    </div>
+    <datalist id="ciudadesList"></datalist>
     <div class="divider"></div>
     <div class="field">
       <label for="sort">Ordenar por</label>
@@ -321,11 +324,41 @@
 
 <script>
 let PROVIDERS = [];
+const CITY_COORDS = {"CIENAGA DE ORO": {"lat": 8.84804046695, "lon": -75.6110367643, "depto": "Córdoba", "nombre": "Ciénaga de Oro"}, "PUEBLO NUEVO": {"lat": 8.47939648725, "lon": -75.4084994709, "depto": "Córdoba", "nombre": "Pueblo Nuevo"}, "AYAPEL": {"lat": 8.26097217216, "lon": -75.0499992129, "depto": "Córdoba", "nombre": "Ayapel"}, "PUERTO LIBERTADOR": {"lat": 7.71133904003, "lon": -75.770297359, "depto": "Córdoba", "nombre": "Puerto Libertador"}, "SAN PELAYO": {"lat": 8.98957025868, "lon": -75.9105353524, "depto": "Córdoba", "nombre": "San Pelayo"}, "COVENAS": {"lat": 9.39849159578, "lon": -75.656254512, "depto": "Sucre", "nombre": "Coveñas"}, "PALMITO": {"lat": 9.34005818203, "lon": -75.5715955373, "depto": "Sucre", "nombre": "Palmito"}, "TOLU": {"lat": 9.53435298433, "lon": -75.5347836485, "depto": "Sucre", "nombre": "Tolú"}, "SAN ONOFRE": {"lat": 9.81418507243, "lon": -75.4987162, "depto": "Sucre", "nombre": "San Onofre"}, "MORROA": {"lat": 9.3912697156, "lon": -75.3279658379, "depto": "Sucre", "nombre": "Morroa"}, "LOS PALMITOS": {"lat": 9.42707860584, "lon": -75.2148505595, "depto": "Sucre", "nombre": "Los Palmitos"}, "SUCRE": {"lat": 8.82638334977, "lon": -74.7431103344, "depto": "Sucre", "nombre": "Sucre"}, "MAJAGUAL": {"lat": 8.54483934827, "lon": -74.7264554713, "depto": "Sucre", "nombre": "Majagual"}, "CARTAGENA": {"lat": 10.443145599, "lon": -75.4643086492, "depto": "Bolívar", "nombre": "Cartagena"}, "SANTA CATALINA": {"lat": 10.6462050346, "lon": -75.2662946969, "depto": "Bolívar", "nombre": "Santa Catalina"}, "BARRANQUILLA": {"lat": 10.980133002, "lon": -74.826452141, "depto": "Atlantico", "nombre": "Barranquilla"}, "VILLAVICENCIO": {"lat": 4.09188552623, "lon": -73.4876087423, "depto": "Meta", "nombre": "Villavicencio"}, "YOPAL": {"lat": 5.24263680875, "lon": -72.2574361177, "depto": "Casanare", "nombre": "Yopal"}, "ARAUCA": {"lat": 6.79608264973, "lon": -70.5097373853, "depto": "Arauca", "nombre": "Arauca"}, "RIOHACHA": {"lat": 11.2433148369, "lon": -72.9584522815, "depto": "La Guajira", "nombre": "Riohacha"}, "SANTA MARTA": {"lat": 11.1220847077, "lon": -73.8853832952, "depto": "Magdalena", "nombre": "Santa Marta"}, "VALLEDUPAR": {"lat": 10.380965904, "lon": -73.4642029055, "depto": "Cesar", "nombre": "Valledupar"}, "CUCUTA": {"lat": 8.11240990041, "lon": -72.4888424342, "depto": "Norte de Santander", "nombre": "Cúcuta"}, "BUCARAMANGA": {"lat": 7.15547525705, "lon": -73.1113323289, "depto": "Santander", "nombre": "Bucaramanga"}, "TUNJA": {"lat": 5.51755057649, "lon": -73.3779153741, "depto": "Boyacá", "nombre": "Tunja"}, "BOGOTA": {"lat": 4.31237146644, "lon": -74.1817408654, "depto": "Bogotá D.C.", "nombre": "Bogotá"}, "NEIVA": {"lat": 3.0090438788, "lon": -75.2878381572, "depto": "Huila", "nombre": "Neiva"}, "IBAGUE": {"lat": 4.45173264089, "lon": -75.2518958871, "depto": "Tolima", "nombre": "Ibagué"}, "ARMENIA": {"lat": 4.49867535353, "lon": -75.725134343, "depto": "Quindio", "nombre": "Armenia"}, "MANIZALES": {"lat": 5.08281067458, "lon": -75.5059795502, "depto": "Caldas", "nombre": "Manizales"}, "MEDELLIN": {"lat": 6.25845471883, "lon": -75.6111464489, "depto": "Antioquia", "nombre": "Medellín"}, "MONTERIA": {"lat": 8.5852332521, "lon": -75.9568460646, "depto": "Córdoba", "nombre": "Montería"}, "SINCELEJO": {"lat": 9.31314206432, "lon": -75.4301615283, "depto": "Sucre", "nombre": "Sincelejo"}, "PASTO": {"lat": 1.07814159569, "lon": -77.2031024951, "depto": "Nariño", "nombre": "Pasto"}, "POPAYAN": {"lat": 2.47180259391, "lon": -76.5920590004, "depto": "Cauca", "nombre": "Popayán"}, "FLORENCIA": {"lat": 1.74829331763, "lon": -75.5618109675, "depto": "Caquetá", "nombre": "Florencia"}, "MOCOA": {"lat": 1.22280109316, "lon": -76.6797326508, "depto": "Putumayo", "nombre": "Mocoa"}, "SAN JOSE DEL GUAVIARE": {"lat": 2.48227057682, "lon": -71.9268849076, "depto": "Guaviare", "nombre": "San José del Guaviare"}, "MITU": {"lat": 1.01800732638, "lon": -70.4165600521, "depto": "Vaupés", "nombre": "Mitú"}, "INIRIDA": {"lat": 3.3193201621, "lon": -68.4574075996, "depto": "Guainia", "nombre": "Inirida"}, "PUERTO CARRENO": {"lat": 5.8368510573, "lon": -68.1410966851, "depto": "Vichada", "nombre": "Puerto Carreño"}, "LETICIA": {"lat": -3.53042696514, "lon": -70.0452982201, "depto": "Amazonas", "nombre": "Leticia"}, "SAN ANDRES": {"lat": 12.5456935846, "lon": -81.7207006675, "depto": "Archipiélago de San Andrés", "nombre": "San Andrés"}, "CALI": {"lat": 3.39700740435, "lon": -76.5756769868, "depto": "Valle del Cauca", "nombre": "Cali"}, "PEREIRA": {"lat": 4.7813641878, "lon": -75.7136143683, "depto": "Risaralda", "nombre": "Pereira"}, "QUIBDO": {"lat": 5.93881049101, "lon": -76.6636135853, "depto": "Chocó", "nombre": "Quibdó"}, "AGUACHICA": {"lat": 10.380965904, "lon": -72.4642029055, "depto": "Cesar", "nombre": "Aguachica"}, "CAUCASIA": {"lat": 7.86381607654, "lon": -75.0265133134, "depto": "Antioquia", "nombre": "Caucasia"}, "TURBO": {"lat": 7.97320449881, "lon": -76.7306322492, "depto": "Antioquia", "nombre": "Turbo"}, "APARTADO": {"lat": 7.89714476097, "lon": -76.5647970632, "depto": "Antioquia", "nombre": "Apartadó"}, "CHIGORODO": {"lat": 7.6318262885, "lon": -76.639477426, "depto": "Antioquia", "nombre": "Chigorodó"}, "NECOCLI": {"lat": 8.49297589001, "lon": -76.6746015133, "depto": "Antioquia", "nombre": "Necoclí"}, "RIONEGRO": {"lat": 6.15133378191, "lon": -75.4100891837, "depto": "Antioquia", "nombre": "Rionegro"}, "MARINILLA": {"lat": 6.18554994156, "lon": -75.3045503263, "depto": "Antioquia", "nombre": "Marinilla"}, "CHIQUIZA": {"lat": 5.6424849928, "lon": -73.4454298524, "depto": "Boyacá", "nombre": "Chíquiza"}, "SAMACA": {"lat": 5.47014852797, "lon": -73.5220777743, "depto": "Boyacá", "nombre": "Samacá"}, "CHIQUINQUIRA": {"lat": 5.62135391669, "lon": -73.8005933276, "depto": "Boyacá", "nombre": "Chiquinquirá"}, "DUITAMA": {"lat": 5.89281196958, "lon": -73.0690265996, "depto": "Boyacá", "nombre": "Duitama"}, "SOGAMOSO": {"lat": 5.66839464587, "lon": -72.8859867473, "depto": "Boyacá", "nombre": "Sogamoso"}, "PUERTO BOYACA": {"lat": 5.95450975843, "lon": -74.453083035, "depto": "Boyacá", "nombre": "Puerto Boyacá"}, "GIRON": {"lat": 7.03746362977, "lon": -73.2499392351, "depto": "Santander", "nombre": "Girón"}, "FLORIDABLANCA": {"lat": 7.07890958434, "lon": -73.0688061487, "depto": "Santander", "nombre": "Floridablanca"}, "PIEDECUESTA": {"lat": 6.96283305318, "lon": -73.0055087797, "depto": "Santander", "nombre": "Piedecuesta"}, "BARRANCABERMEJA": {"lat": 7.062095762, "lon": -73.776718505, "depto": "Santander", "nombre": "Barrancabermeja"}, "SABANALARGA": {"lat": 4.8084712373, "lon": -72.9946993758, "depto": "Casanare", "nombre": "Sabanalarga"}, "LA DORADA": {"lat": 4.532, "lon": -76.109, "depto": "Caldas", "nombre": "La Dorada"}, "TULUA": {"lat": 4.02856145992, "lon": -76.0322046462, "depto": "Valle del Cauca", "nombre": "Tuluá"}, "BUGA": {"lat": 3.85582559805, "lon": -76.1066547806, "depto": "Valle del Cauca", "nombre": "Buga"}, "PALMIRA": {"lat": 3.55848221789, "lon": -76.22750075, "depto": "Valle del Cauca", "nombre": "Palmira"}, "YUMBO": {"lat": 3.59602165061, "lon": -76.5110634969, "depto": "Valle del Cauca", "nombre": "Yumbo"}, "JAMUNDI": {"lat": 3.21254417176, "lon": -76.6280852881, "depto": "Valle del Cauca", "nombre": "Jamundí"}, "BUENAVENTURA": {"lat": 3.61107502442, "lon": -77.0852106856, "depto": "Valle del Cauca", "nombre": "Buenaventura"}, "ITAGUI": {"lat": 6.1798108693, "lon": -75.615969687, "depto": "Antioquia", "nombre": "Itaguí"}, "SABANETA": {"lat": 6.13800029187, "lon": -75.6085498164, "depto": "Antioquia", "nombre": "Sabaneta"}, "BELLO": {"lat": 6.35881740498, "lon": -75.5896199546, "depto": "Antioquia", "nombre": "Bello"}, "ENVIGADO": {"lat": 6.1449116331, "lon": -75.5700786329, "depto": "Antioquia", "nombre": "Envigado"}, "GIRARDOTA": {"lat": 6.37992202529, "lon": -75.4479506022, "depto": "Antioquia", "nombre": "Girardota"}, "COPACABANA": {"lat": 6.35237249391, "lon": -75.5006934922, "depto": "Antioquia", "nombre": "Copacabana"}, "YARUMAL": {"lat": 6.98875833201, "lon": -75.4538739216, "depto": "Antioquia", "nombre": "Yarumal"}, "SANTA FE DE ANTIOQUIA": {"lat": 6.52939511608, "lon": -75.8984344519, "depto": "Antioquia", "nombre": "Santa Fe de Antioquia"}, "GIRARDOT": {"lat": 4.33921213271, "lon": -74.8107066779, "depto": "Cundinamarca", "nombre": "Girardot"}, "SOACHA": {"lat": 4.53515770263, "lon": -74.2250409816, "depto": "Cundinamarca", "nombre": "Soacha"}, "CHIA": {"lat": 4.86592054841, "lon": -74.036864477, "depto": "Cundinamarca", "nombre": "Chía"}, "CAJICA": {"lat": 4.93135819204, "lon": -74.0292086681, "depto": "Cundinamarca", "nombre": "Cajicá"}, "COTA": {"lat": 4.78755612688, "lon": -74.1231849106, "depto": "Cundinamarca", "nombre": "Cota"}, "LA VEGA": {"lat": 4.97791761888, "lon": -74.339677612, "depto": "Cundinamarca", "nombre": "La Vega"}, "FACATATIVA": {"lat": 4.86, "lon": -74.4783, "depto": "Cundinamarca", "nombre": "Facatativá"}, "ZIPAQUIRA": {"lat": 5.04557775602, "lon": -74.0199091738, "depto": "Cundinamarca", "nombre": "Zipaquirá"}, "FUSAGASUGA": {"lat": 4.31816213877, "lon": -74.3845193701, "depto": "Cundinamarca", "nombre": "Fusagasugá"}, "HONDA": {"lat": 5.17949467392, "lon": -74.7802742609, "depto": "Tolima", "nombre": "Honda"}, "FALAN": {"lat": 5.07748013262, "lon": -74.9585052831, "depto": "Tolima", "nombre": "Falan"}, "GUAMO": {"lat": 4.07621123827, "lon": -74.9764640271, "depto": "Tolima", "nombre": "Guamo"}, "ESPINAL": {"lat": 4.16633022032, "lon": -74.8939576983, "depto": "Tolima", "nombre": "Espinal"}, "MELGAR": {"lat": 4.18676324082, "lon": -74.637757503, "depto": "Tolima", "nombre": "Melgar"}, "CHIMICHAGUA": {"lat": 9.21866280137, "lon": -73.7526422176, "depto": "Cesar", "nombre": "Chimichagua"}, "PAILITAS": {"lat": 8.93924484312, "lon": -73.5761995471, "depto": "Cesar", "nombre": "Pailitas"}, "CHIPATA": {"lat": 6.06780869556, "lon": -73.6323093709, "depto": "Santander", "nombre": "Chipatá"}, "MAICAO": {"lat": 11.3808209588, "lon": -72.2955534169, "depto": "La Guajira", "nombre": "Maicao"}, "DIBULLA": {"lat": 11.0900660908, "lon": -73.435095841, "depto": "La Guajira", "nombre": "Dibulla"}, "PLATO": {"lat": 9.76780353078, "lon": -74.6027591021, "depto": "Magdalena", "nombre": "Plato"}, "CIENAGA": {"lat": 10.8882006758, "lon": -74.0434394805, "depto": "Magdalena", "nombre": "Ciénaga"}, "JURADO": {"lat": 7.11362339712, "lon": -77.6849478747, "depto": "Chocó", "nombre": "Juradó"}, "BAHIA SOLANO": {"lat": 6.29328989372, "lon": -77.354003055, "depto": "Chocó", "nombre": "Bahía Solano"}, "ACANDI": {"lat": 8.43507676605, "lon": -77.2894915342, "depto": "Chocó", "nombre": "Acandí"}, "TUMACO": {"lat": 1.63371673406, "lon": -78.6131567486, "depto": "Nariño", "nombre": "Tumaco"}, "IPIALES": {"lat": 0.562321114311, "lon": -77.3682619929, "depto": "Nariño", "nombre": "Ipiales"}, "BOSCONIA": {"lat": 9.94635511344, "lon": -73.8686005699, "depto": "Cesar", "nombre": "Bosconia"}, "CAQUEZA": {"lat": 4.40247129204, "lon": -73.9445158798, "depto": "Cundinamarca", "nombre": "Cáqueza"}, "CURUMANI": {"lat": 9.23943116875, "lon": -73.4880266124, "depto": "Cesar", "nombre": "Curumaní"}, "FUNDACION": {"lat": 10.4590048633, "lon": -73.8842436048, "depto": "Magdalena", "nombre": "Fundación"}, "GARZON": {"lat": 2.17273243109, "lon": -75.5696960474, "depto": "Huila", "nombre": "Garzón"}, "GUADUAS": {"lat": 5.17398782112, "lon": -74.6391665133, "depto": "Cundinamarca", "nombre": "Guaduas"}, "LA MESA": {"lat": 4.65120431074, "lon": -74.473470354, "depto": "Cundinamarca", "nombre": "La Mesa"}, "PITALITO": {"lat": 1.82003899339, "lon": -76.12126627, "depto": "Huila", "nombre": "Pitalito"}, "RIOACHA": {"lat": 11.2433148369, "lon": -72.9584522815, "depto": "La Guajira", "nombre": "Rioacha"}, "LA GUAJIRA": {"lat": 11.2433148369, "lon": -72.9584522815, "depto": "La Guajira", "nombre": "La Guajira"}, "SESQUILE": {"lat": 5.0083856906, "lon": -73.7794315517, "depto": "Cundinamarca", "nombre": "Sesquilé"}, "SILVANIA": {"lat": 4.43801329013, "lon": -74.3699160696, "depto": "Cundinamarca", "nombre": "Silvania"}, "UBATE": {"lat": 5.31371153923, "lon": -73.8215008838, "depto": "Cundinamarca", "nombre": "Ubaté"}, "VENTAQUEMADA": {"lat": 5.383886567, "lon": -73.519359066, "depto": "Boyacá", "nombre": "Ventaquemada"}, "MUTATA": {"lat": 7.33918671523, "lon": -76.4909084394, "depto": "Antioquia", "nombre": "Mutatá"}, "SAN GIL": {"lat": 6.55089556496, "lon": -73.1181969914, "depto": "Santander", "nombre": "San Gil"}, "BARBOSA": {"lat": 5.95539084087, "lon": -73.6232297951, "depto": "Santander", "nombre": "Barbosa"}, "COROZAL": {"lat": 9.20156662257, "lon": -75.2479420907, "depto": "Sucre", "nombre": "Corozal"}, "ARMERO": {"lat": 5.00746798895, "lon": -74.846802401, "depto": "Tolima", "nombre": "Armero"}, "EL ESPINAL": {"lat": 4.16633022032, "lon": -74.8939576983, "depto": "Tolima", "nombre": "El Espinal"}, "CARTAGO": {"lat": 4.7970454855, "lon": -75.91731142, "depto": "Valle del Cauca", "nombre": "Cartago"}, "CAUCACIA": {"lat": 7.86381607654, "lon": -75.0265133134, "depto": "Antioquia", "nombre": "Caucacia"}, "BARRACANBERMEJA": {"lat": 7.062095762, "lon": -73.776718505, "depto": "Santander", "nombre": "Barracanbermeja"}, "CURUAMI": {"lat": 9.23943116875, "lon": -73.4880266124, "depto": "Cesar", "nombre": "Curuamí"}};
+
+function normCityFixed(s){
+  return (s||'').toString()
+    .normalize('NFKD').replace(/[\u0300-\u036f]/g,'')
+    .toUpperCase().trim()
+    .replace(/[^A-Z0-9]+/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+function resolveCity(name){
+  const key = normCityFixed(name);
+  return CITY_COORDS[key] || null;
+}
+function haversineKm(lat1, lon1, lat2, lon2){
+  const R = 6371;
+  const dLat = (lat2-lat1) * Math.PI/180;
+  const dLon = (lon2-lon1) * Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+// Poblar el datalist con los nombres de ciudades conocidas
+const ciudadesList = document.getElementById('ciudadesList');
+Object.values(CITY_COORDS).forEach(c=>{
+  const opt = document.createElement('option');
+  opt.value = c.nombre;
+  ciudadesList.appendChild(opt);
+});
 
 const serviceLabels = {gl:'Grúa liviana', gancho:'Gancho', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
 const activeServices = new Set();
 
-const deptSelect = document.getElementById('dept');
+const origenInput = document.getElementById('origen');
+const destinoInput = document.getElementById('destino');
 
 document.querySelectorAll('.chip').forEach(chip=>{
   chip.addEventListener('click', ()=>{
@@ -336,7 +369,8 @@ document.querySelectorAll('.chip').forEach(chip=>{
   });
 });
 
-deptSelect.addEventListener('change', render);
+origenInput.addEventListener('input', render);
+destinoInput.addEventListener('input', render);
 document.getElementById('sort').addEventListener('change', render);
 document.getElementById('search').addEventListener('input', render);
 
@@ -351,22 +385,45 @@ function railNum(pr){
   return '–';
 }
 
+const RADIO_KM = 200;
+
 function render(){
-  const dept = deptSelect.value;
+  const origenName = origenInput.value.trim();
+  const destinoName = destinoInput.value.trim();
   const sortBy = document.getElementById('sort').value;
   const query = document.getElementById('search').value.trim().toLowerCase();
   const grid = document.getElementById('grid');
 
-  if(!dept && !query){
+  if(!origenName && !query){
     grid.innerHTML = '';
-    document.getElementById('resultCount').textContent = 'Selecciona un departamento o busca un proveedor por nombre';
+    document.getElementById('resultCount').textContent = 'Escribe la ciudad de origen o busca un proveedor por nombre';
     document.getElementById('emptyState').style.display = 'none';
     return;
   }
 
+  let origenCoords = null;
+  if(origenName){
+    origenCoords = resolveCity(origenName);
+    if(!origenCoords && !query){
+      grid.innerHTML = '';
+      document.getElementById('resultCount').textContent = `No reconocemos "${origenName}" como ciudad. Verifica la ortografía o elige una opción de la lista.`;
+      document.getElementById('emptyState').style.display = 'none';
+      return;
+    }
+  }
+
   let list = PROVIDERS.filter(p=>{
     if(query && !p.n.toLowerCase().includes(query)) return false;
-    if(dept && p.d !== dept) return false;
+    if(origenCoords){
+      const provCoords = resolveCity(p.ciudad);
+      if(provCoords){
+        const dist = haversineKm(origenCoords.lat, origenCoords.lon, provCoords.lat, provCoords.lon);
+        if(dist > RADIO_KM) return false;
+      } else {
+        // Sin ciudad reconocida para este proveedor: fallback por departamento
+        if(normCityFixed(p.d) !== normCityFixed(origenCoords.depto)) return false;
+      }
+    }
     for(const key of activeServices){
       if(p[key] !== 'SI') return false;
     }
@@ -382,7 +439,11 @@ function render(){
     return a.n.localeCompare(b.n);
   });
 
-  document.getElementById('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}`;
+  const contextParts = [];
+  if(origenName) contextParts.push(`en un radio de ${RADIO_KM}km desde ${origenName}`);
+  if(destinoName) contextParts.push(`destino: ${destinoName} (informativo)`);
+  const contextStr = contextParts.length ? ` · ${contextParts.join(' · ')}` : '';
+  document.getElementById('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}${contextStr}`;
   document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
   grid.innerHTML = '';
 
@@ -475,13 +536,6 @@ async function loadData(){
     const res = await fetch('./providers.json?_=' + Date.now());
     if(!res.ok) throw new Error('HTTP ' + res.status);
     PROVIDERS = await res.json();
-
-    const depts = [...new Set(PROVIDERS.map(p=>p.d).filter(Boolean))].sort();
-    depts.forEach(d=>{
-      const opt = document.createElement('option');
-      opt.value = d; opt.textContent = d;
-      deptSelect.appendChild(opt);
-    });
 
     if(PROVIDERS.length && PROVIDERS[0]._updated_at){
       document.getElementById('lastUpdated').textContent = 'Datos actualizados: ' + PROVIDERS[0]._updated_at;
