@@ -210,7 +210,6 @@
     white-space:nowrap;
     cursor:help;
   }
-  .score-badge.dist-badge{background:var(--tier1);}
   .distance-banner{
     margin-bottom:14px;
   }
@@ -326,7 +325,7 @@
       <label for="sort">Ordenar por</label>
       <select id="sort" class="sort-select">
         <option value="prio">Prioridad (mejor primero)</option>
-        <option value="score">Score (volumen + velocidad)</option>
+        <option value="score">Score (servicios + tiempo)</option>
         <option value="servicios">Servicios realizados (30 días)</option>
         <option value="name">Nombre (A-Z)</option>
       </select>
@@ -463,9 +462,9 @@ function buildCard(p, distInfo){
     : `Sin datos (30d)`;
   const panelId = `drivers-${Math.random().toString(36).slice(2)}`;
 
-  const distBadge = distInfo
-    ? `<span class="score-badge dist-badge" title="Cercanía: Distancia 50% + Servicios 30% + Tiempo 20%">${distInfo.dist === null ? 'Mismo depto.' : '~' + Math.round(distInfo.dist) + 'km'} · Cercanía ${distInfo.distScore}</span>`
-    : '';
+  const scoreBadge = distInfo
+    ? `<span class="score-badge" title="Distancia 50% + Servicios 30% + Tiempo 20%">${distInfo.dist === null ? 'Mismo depto.' : '~' + Math.round(distInfo.dist) + 'km'} · Score ${distInfo.distScore}</span>`
+    : `<span class="score-badge" title="Servicios 30% + Tiempo 20% (sin componente de distancia)">Score ${p.score||0}</span>`;
 
   card.innerHTML = `
     <div class="rail ${prioClass(p.pr)}">
@@ -493,8 +492,7 @@ function buildCard(p, distInfo){
         </div>
       </div>
       <div class="card-side">
-        ${distBadge}
-        <span class="score-badge" title="Volumen ${p.score_volumen||0}/60 + Velocidad ${p.score_velocidad||0}/40">Score ${p.score||0}</span>
+        ${scoreBadge}
         <button class="metric-btn ${hasPanelContent?'':'no-data'}" ${hasPanelContent ? `onclick="togglePanel('${panelId}', this)"` : 'disabled'}>${metricLabel}</button>
         <div class="card-contact">${tel1}${tel2}${waLink}</div>
       </div>
@@ -602,8 +600,14 @@ function render(){
     else tier2.push(entry);
   });
 
-  tier1.sort((a,b)=> b.distScore - a.distScore);
-  tier2.sort((a,b)=> b.distScore - a.distScore);
+  function porTierYScore(a, b){
+    const rank = {'1':1,'2':2,'3':3,'-':4};
+    const ra = rank[a.p.pr] || 4, rb = rank[b.p.pr] || 4;
+    if(ra !== rb) return ra - rb;
+    return b.distScore - a.distScore;
+  }
+  tier1.sort(porTierYScore);
+  tier2.sort(porTierYScore);
 
   contextParts.unshift(`desde ${origenName}`);
   const total = tier1.length + tier2.length;
@@ -622,17 +626,18 @@ function togglePanel(id, btn){
 
 const ARRIVAL_CATS = ['grua','jumpstart','flattire','locksmith'];
 
-function scoreVolumen(servicios){
+function scoreVolumenV2(servicios){
   const s = servicios || 0;
   if(s === 0) return 0;
-  if(s <= 3) return 15;
-  if(s <= 10) return 35;
-  if(s <= 25) return 50;
-  return 60;
+  if(s <= 3) return 8;
+  if(s <= 10) return 18;
+  if(s <= 25) return 25;
+  return 30;
 }
 
 function computeScores(providers){
-  // 1) Rango global (min/max) de tiempo de arribo por categoría, entre quienes SÍ tienen dato
+  // Rango global (min/max) de tiempo de arribo por categoría, entre quienes SÍ tienen dato.
+  // Se usa para el componente de Velocidad (20%) del score.
   const ranges = {};
   ARRIVAL_CATS.forEach(cat=>{
     const vals = providers
@@ -643,7 +648,6 @@ function computeScores(providers){
     }
   });
 
-  // 2) Score de velocidad por proveedor: percentil promedio entre las categorías con dato
   providers.forEach(p=>{
     const arribo = p.arribo_30d || {};
     const cats = ARRIVAL_CATS.filter(cat => arribo[cat] && ranges[cat]);
@@ -657,33 +661,20 @@ function computeScores(providers){
       });
       velocidadScore = perCatScores.reduce((a,b)=>a+b,0) / perCatScores.length;
     }
-    const volumenScore = scoreVolumen(p.servicios_30d);
-    p.score = Math.round(volumenScore + velocidadScore);
-    p.score_volumen = volumenScore;
-    p.score_velocidad = Math.round(velocidadScore);
+    p.score_velocidad = Math.round(velocidadScore); // 0-40, insumo interno para el score final
+    p.score = computeDistanceScore(p, null); // score base sin distancia (se recalcula si hay origen)
   });
 }
 
-// Score de cercanía: Distancia 50% + Volumen 30% + Velocidad 20%
-// Independiente del "Score" general (Volumen 60% + Velocidad 40%).
-// Solo aplica cuando hay una Ciudad Origen resuelta.
-function scoreVolumenV2(servicios){
-  const s = servicios || 0;
-  if(s === 0) return 0;
-  if(s <= 3) return 8;
-  if(s <= 10) return 18;
-  if(s <= 25) return 25;
-  return 30;
+// Score único: Distancia 50% + Servicios 30% + Tiempo de arribo 20%
+// Si no hay ciudad de origen (distKm === null), el componente de distancia aporta 0.
+function computeDistanceScore(p, distKm){
+  const scoreDistancia = (distKm === null) ? 0 : Math.max(0, 50 * (RADIO_KM - distKm) / RADIO_KM);
+  const scoreServicios = scoreVolumenV2(p.servicios_30d);
+  const scoreVelocidad = ((p.score_velocidad || 0) / 40) * 20;
+  return Math.round(scoreDistancia + scoreServicios + scoreVelocidad);
 }
 
-function computeDistanceScore(p, distKm){
-  // distKm === null => sin distancia exacta (match por departamento), no se premia ni castiga
-  const scoreDistancia = (distKm === null) ? 0 : Math.max(0, 50 * (RADIO_KM - distKm) / RADIO_KM);
-  const scoreVolumen = scoreVolumenV2(p.servicios_30d);
-  // Reutilizamos el % velocidad ya calculado en score_velocidad (sobre 40) y lo escalamos a 20
-  const scoreVelocidad = ((p.score_velocidad || 0) / 40) * 20;
-  return Math.round(scoreDistancia + scoreVolumen + scoreVelocidad);
-}
 
 async function loadData(){
   const grid = document.getElementById('grid');
