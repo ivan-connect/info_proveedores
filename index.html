@@ -186,6 +186,16 @@
     color:#fff;
     border-color:var(--tier1);
   }
+  .hint-badge{
+    font-size:11.5px;
+    font-weight:600;
+    color:var(--tier1-deep);
+    background:#FFF3ED;
+    border:1px solid #FBD9C7;
+    padding:4px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
 
   .summary{
     display:flex;
@@ -403,14 +413,6 @@
 <div class="container">
   <div class="filters">
     <div class="field">
-      <label for="search">Proveedor</label>
-      <div class="input-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="search" placeholder="Buscar por nombre…" style="min-width:190px;">
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="field">
       <label for="origen">Ciudad origen *</label>
       <div class="input-wrap">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -426,18 +428,8 @@
     </div>
     <datalist id="ciudadesList"></datalist>
     <div class="divider"></div>
-    <div class="field">
-      <label for="sort">Ordenar por</label>
-      <select id="sort" class="sort-select">
-        <option value="prio">Prioridad (mejor primero)</option>
-        <option value="score">Score (de mayor a menor)</option>
-        <option value="servicios">Servicios realizados (30 días)</option>
-        <option value="name">Nombre (A-Z)</option>
-      </select>
-    </div>
-    <div class="divider"></div>
     <div class="field services">
-      <label>Servicio</label>
+      <label>Servicio *</label>
       <div class="chips" id="serviceChips">
         <div class="chip" data-key="gl">Grúa liviana</div>
         <div class="chip" data-key="gancho">Gancho</div>
@@ -447,6 +439,25 @@
         <div class="chip" data-key="ce">CE</div>
         <div class="chip" data-key="de">Desplazamiento</div>
       </div>
+      <span id="servicioHint" class="hint-badge" style="display:none;">⚠ Elige un servicio</span>
+    </div>
+    <div class="divider"></div>
+    <div class="field">
+      <label for="search">Proveedor</label>
+      <div class="input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search" placeholder="Buscar por nombre…" style="min-width:190px;">
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="field">
+      <label for="sort">Ordenar por</label>
+      <select id="sort" class="sort-select">
+        <option value="prio">Prioridad (mejor primero)</option>
+        <option value="score">Score (de mayor a menor)</option>
+        <option value="servicios">Servicios realizados (30 días)</option>
+        <option value="name">Nombre (A-Z)</option>
+      </select>
     </div>
   </div>
 
@@ -644,6 +655,17 @@ function render(){
   const sortBy = document.getElementById('sort').value;
   const query = document.getElementById('search').value.trim().toLowerCase();
   const grid = document.getElementById('grid');
+  const servicioHint = document.getElementById('servicioHint');
+
+  // Aviso: si ya hay ciudad de origen o búsqueda por nombre, pero falta elegir servicio
+  servicioHint.style.display = (origenName || query) && activeServices.size === 0 ? 'inline-block' : 'none';
+
+  if(activeServices.size === 0){
+    grid.innerHTML = '';
+    document.getElementById('resultCount').textContent = 'Selecciona al menos un tipo de servicio para ver resultados';
+    document.getElementById('emptyState').style.display = 'none';
+    return;
+  }
 
   if(!origenName && !query){
     grid.innerHTML = '';
