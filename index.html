@@ -159,6 +159,23 @@
   }
   select:hover, input[type=text]:hover{border-color:#C9CEDA;}
   select:focus, input[type=text]:focus{border-color:var(--tier1);}
+  #origen{
+    border-color:var(--tier1) !important;
+    box-shadow:0 0 0 3px rgba(241,91,43,.14);
+  }
+  #origen:focus{box-shadow:0 0 0 3px rgba(241,91,43,.25);}
+  .start-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:15px;height:15px;
+    border-radius:50%;
+    background:var(--tier1);
+    color:#fff;
+    font-size:9.5px;
+    font-weight:800;
+    flex-shrink:0;
+  }
   .sort-select{min-width:200px;}
   .services{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
   .services .chips{display:flex;flex-wrap:wrap;gap:6px;}
@@ -196,6 +213,26 @@
     border-radius:20px;
     white-space:nowrap;
   }
+  .refresh-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.18);
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:12.5px;
+    font-weight:600;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background .12s;
+  }
+  .refresh-btn:hover{background:rgba(255,255,255,.16);}
+  .refresh-btn:disabled{opacity:.6;cursor:default;}
+  .refresh-btn svg{width:14px;height:14px;flex-shrink:0;}
+  .refresh-btn.spinning svg{animation:spin 1s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
 
   .summary{
     display:flex;
@@ -408,12 +445,16 @@
     <p>Encuentra al proveedor idóneo por cercanía, prioridad y desempeño.</p>
   </div>
   <span class="badge-live"><span class="dot"></span><span id="lastUpdated">Cargando fecha de actualización…</span></span>
+  <button id="refreshBtn" class="refresh-btn" title="Vuelve a leer los Google Sheets y publica los datos más recientes">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
+    Actualizar datos
+  </button>
 </header>
 
 <div class="container">
   <div class="filters">
     <div class="field">
-      <label for="origen">Ciudad origen *</label>
+      <label for="origen"><span class="start-badge">1</span> Ciudad origen *</label>
       <div class="input-wrap">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
         <input type="text" id="origen" list="ciudadesList" placeholder="Ej. Medellín" style="min-width:170px;">
@@ -817,6 +858,33 @@ function computeDistanceScore(p, distKm){
   return Math.round(scoreDistancia + scoreServicios + scoreVelocidad);
 }
 
+
+const N8N_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/5e59271d-be10-40c0-b52f-898c9561f0b3';
+
+const refreshBtn = document.getElementById('refreshBtn');
+refreshBtn.addEventListener('click', async ()=>{
+  refreshBtn.disabled = true;
+  refreshBtn.classList.add('spinning');
+  const originalLabel = refreshBtn.lastChild.textContent;
+  refreshBtn.lastChild.textContent = ' Actualizando…';
+  try{
+    const res = await fetch(N8N_WEBHOOK_URL, { method: 'POST' });
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    await res.json().catch(()=>null); // no es crítico si la respuesta no es JSON válido
+    refreshBtn.lastChild.textContent = ' ¡Listo! Recargando…';
+    await loadData();
+  }catch(err){
+    refreshBtn.lastChild.textContent = ' Error al actualizar';
+    console.error('Error llamando al webhook de n8n:', err);
+    alert('No se pudo iniciar la actualización (' + err.message + '). Verifica que la URL del webhook en el código sea correcta y que el workflow esté activo en n8n.');
+  }finally{
+    refreshBtn.classList.remove('spinning');
+    setTimeout(()=>{
+      refreshBtn.lastChild.textContent = ' ' + originalLabel.trim();
+      refreshBtn.disabled = false;
+    }, 2000);
+  }
+});
 
 async function loadData(){
   const grid = document.getElementById('grid');
