@@ -200,6 +200,16 @@
   .metric-btn:hover{background:#e7e9ee;}
   .metric-btn.no-data{color:var(--muted);cursor:default;}
   .metric-btn.no-data:hover{background:#f1f2f5;}
+  .score-badge{
+    font-size:11px;
+    font-weight:700;
+    color:#fff;
+    background:var(--navy);
+    padding:3px 9px;
+    border-radius:20px;
+    white-space:nowrap;
+    cursor:help;
+  }
   .drivers-panel{
     display:none;
     margin-top:10px;
@@ -293,6 +303,7 @@
       <label for="sort">Ordenar por</label>
       <select id="sort" class="sort-select">
         <option value="prio">Prioridad (mejor primero)</option>
+        <option value="score">Score (volumen + velocidad)</option>
         <option value="servicios">Servicios realizados (30 días)</option>
         <option value="name">Nombre (A-Z)</option>
       </select>
@@ -433,10 +444,11 @@ function render(){
   list.sort((a,b)=>{
     if(sortBy==='name') return a.n.localeCompare(b.n);
     if(sortBy==='servicios') return (b.servicios_30d||0) - (a.servicios_30d||0);
+    if(sortBy==='score') return (b.score||0) - (a.score||0);
     const rank = {'1':1,'2':2,'3':3,'-':4};
     const ra = rank[a.pr] || 4, rb = rank[b.pr] || 4;
     if(ra !== rb) return ra - rb;
-    return a.n.localeCompare(b.n);
+    return (b.score||0) - (a.score||0);
   });
 
   const contextParts = [];
@@ -514,6 +526,7 @@ function render(){
           </div>
         </div>
         <div class="card-side">
+          <span class="score-badge" title="Volumen ${p.score_volumen||0}/60 + Velocidad ${p.score_velocidad||0}/40">Score ${p.score||0}</span>
           <button class="metric-btn ${hasPanelContent?'':'no-data'}" ${hasPanelContent ? `onclick="togglePanel('${panelId}', this)"` : 'disabled'}>${metricLabel}</button>
           <div class="card-contact">${tel1}${tel2}${waLink}</div>
         </div>
@@ -529,6 +542,50 @@ function togglePanel(id, btn){
   btn.textContent = btn.textContent.replace(open ? '▾' : '▴', open ? '▴' : '▾');
 }
 
+const ARRIVAL_CATS = ['grua','jumpstart','flattire','locksmith'];
+
+function scoreVolumen(servicios){
+  const s = servicios || 0;
+  if(s === 0) return 0;
+  if(s <= 3) return 15;
+  if(s <= 10) return 35;
+  if(s <= 25) return 50;
+  return 60;
+}
+
+function computeScores(providers){
+  // 1) Rango global (min/max) de tiempo de arribo por categoría, entre quienes SÍ tienen dato
+  const ranges = {};
+  ARRIVAL_CATS.forEach(cat=>{
+    const vals = providers
+      .map(p => p.arribo_30d && p.arribo_30d[cat] ? p.arribo_30d[cat].promedio_min : null)
+      .filter(v => v !== null);
+    if(vals.length){
+      ranges[cat] = { min: Math.min(...vals), max: Math.max(...vals) };
+    }
+  });
+
+  // 2) Score de velocidad por proveedor: percentil promedio entre las categorías con dato
+  providers.forEach(p=>{
+    const arribo = p.arribo_30d || {};
+    const cats = ARRIVAL_CATS.filter(cat => arribo[cat] && ranges[cat]);
+    let velocidadScore = 0;
+    if(cats.length){
+      const perCatScores = cats.map(cat=>{
+        const { min, max } = ranges[cat];
+        const tiempo = arribo[cat].promedio_min;
+        if(max === min) return 40; // único dato disponible: no hay con qué comparar, se le da el máximo
+        return 40 * (max - tiempo) / (max - min);
+      });
+      velocidadScore = perCatScores.reduce((a,b)=>a+b,0) / perCatScores.length;
+    }
+    const volumenScore = scoreVolumen(p.servicios_30d);
+    p.score = Math.round(volumenScore + velocidadScore);
+    p.score_volumen = volumenScore;
+    p.score_velocidad = Math.round(velocidadScore);
+  });
+}
+
 async function loadData(){
   const grid = document.getElementById('grid');
   grid.innerHTML = '<div class="empty">Cargando proveedores…</div>';
@@ -536,6 +593,7 @@ async function loadData(){
     const res = await fetch('./providers.json?_=' + Date.now());
     if(!res.ok) throw new Error('HTTP ' + res.status);
     PROVIDERS = await res.json();
+    computeScores(PROVIDERS);
 
     if(PROVIDERS.length && PROVIDERS[0]._updated_at){
       document.getElementById('lastUpdated').textContent = 'Datos actualizados: ' + PROVIDERS[0]._updated_at;
