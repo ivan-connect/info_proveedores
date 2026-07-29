@@ -6,7 +6,7 @@
 <title>Buscador de Proveedores</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Prompt:wght@900&display=swap" rel="stylesheet">
 <style>
   :root{
     --tier1:#F15B2B;
@@ -66,6 +66,28 @@
     letter-spacing:-.01em;
   }
   header p{margin:0;color:#98A0B8;font-size:13px;}
+  .brand-connect{
+    font-family:'Prompt', sans-serif;
+    font-weight:900;
+    font-size:20px;
+    letter-spacing:-1px;
+    color:var(--tier1);
+    line-height:1;
+    text-transform:uppercase;
+    display:inline-block;
+  }
+  .brand-connect sup{
+    font-size:9px;
+    font-weight:700;
+    vertical-align:super;
+    margin-left:1px;
+  }
+  .header-title-row{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
   .badge-live{
     display:inline-flex;
     align-items:center;
@@ -368,7 +390,11 @@
 <body>
 <header>
   <div>
-    <h1>Buscador de Proveedores</h1>
+    <div class="header-title-row">
+      <span class="brand-connect">Connect<sup>®</sup></span>
+      <span style="width:1px;height:20px;background:rgba(255,255,255,.2);"></span>
+      <h1>Buscador de Proveedores</h1>
+    </div>
     <p>Encuentra al proveedor idóneo por cercanía, prioridad y desempeño.</p>
   </div>
   <span class="badge-live"><span class="dot"></span><span id="lastUpdated">Cargando fecha de actualización…</span></span>
