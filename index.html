@@ -404,7 +404,7 @@
       <label for="sort">Ordenar por</label>
       <select id="sort" class="sort-select">
         <option value="prio">Prioridad (mejor primero)</option>
-        <option value="score">Score (servicios + tiempo)</option>
+        <option value="score">Score (de mayor a menor)</option>
         <option value="servicios">Servicios realizados (30 días)</option>
         <option value="name">Nombre (A-Z)</option>
       </select>
@@ -648,20 +648,28 @@ function render(){
   const contextParts = [];
   if(destinoName) contextParts.push(`destino: ${destinoName} (informativo)`);
 
+  // Comparador único: acepta tanto proveedores planos (modo sin origen) como
+  // entries {p, dist, distScore} (modo con banners), y respeta el dropdown "Ordenar por".
+  function compareEntries(a, b){
+    const pa = a.p || a, pb = b.p || b;
+    const scoreA = a.distScore !== undefined ? a.distScore : (pa.score || 0);
+    const scoreB = b.distScore !== undefined ? b.distScore : (pb.score || 0);
+    if(sortBy==='name') return pa.n.localeCompare(pb.n);
+    if(sortBy==='servicios') return (pb.servicios_30d||0) - (pa.servicios_30d||0);
+    if(sortBy==='score') return scoreB - scoreA;
+    // 'prio' (default): Tier primero, luego Score
+    const rank = {'1':1,'2':2,'3':3,'-':4};
+    const ra = rank[pa.pr] || 4, rb = rank[pb.pr] || 4;
+    if(ra !== rb) return ra - rb;
+    return scoreB - scoreA;
+  }
+
   grid.innerHTML = '';
 
   if(!origenCoords){
-    // Sin ciudad de origen resuelta: lista simple, orden manual (dropdown)
+    // Sin ciudad de origen resuelta: lista simple
     let list = base.slice();
-    list.sort((a,b)=>{
-      if(sortBy==='name') return a.n.localeCompare(b.n);
-      if(sortBy==='servicios') return (b.servicios_30d||0) - (a.servicios_30d||0);
-      if(sortBy==='score') return (b.score||0) - (a.score||0);
-      const rank = {'1':1,'2':2,'3':3,'-':4};
-      const ra = rank[a.pr] || 4, rb = rank[b.pr] || 4;
-      if(ra !== rb) return ra - rb;
-      return (b.score||0) - (a.score||0);
-    });
+    list.sort(compareEntries);
     document.getElementById('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}${contextParts.length ? ' · ' + contextParts.join(' · ') : ''}`;
     document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
     list.forEach(p=> grid.appendChild(buildCard(p, null)));
@@ -686,14 +694,8 @@ function render(){
     else tier2.push(entry);
   });
 
-  function porTierYScore(a, b){
-    const rank = {'1':1,'2':2,'3':3,'-':4};
-    const ra = rank[a.p.pr] || 4, rb = rank[b.p.pr] || 4;
-    if(ra !== rb) return ra - rb;
-    return b.distScore - a.distScore;
-  }
-  tier1.sort(porTierYScore);
-  tier2.sort(porTierYScore);
+  tier1.sort(compareEntries);
+  tier2.sort(compareEntries);
 
   contextParts.unshift(`desde ${origenName}`);
   const total = tier1.length + tier2.length;
@@ -711,14 +713,14 @@ function togglePanel(id, btn){
 }
 
 const ARRIVAL_CATS = ['grua','jumpstart','flattire','locksmith'];
+let SERVICIOS_RANGE = null;
 
-function scoreVolumenV2(servicios){
+function scoreServiciosPercentil(servicios){
   const s = servicios || 0;
-  if(s === 0) return 0;
-  if(s <= 3) return 8;
-  if(s <= 10) return 18;
-  if(s <= 25) return 25;
-  return 30;
+  if(s === 0 || !SERVICIOS_RANGE) return 0;
+  const { min, max } = SERVICIOS_RANGE;
+  if(max === min) return 30;
+  return 30 * (s - min) / (max - min);
 }
 
 function computeScores(providers){
@@ -733,6 +735,10 @@ function computeScores(providers){
       ranges[cat] = { min: Math.min(...vals), max: Math.max(...vals) };
     }
   });
+
+  // Rango global de servicios_30d (entre quienes tienen al menos 1), para el componente de Servicios (percentil).
+  const serviciosVals = providers.map(p => p.servicios_30d || 0).filter(v => v > 0);
+  SERVICIOS_RANGE = serviciosVals.length ? { min: Math.min(...serviciosVals), max: Math.max(...serviciosVals) } : null;
 
   providers.forEach(p=>{
     const arribo = p.arribo_30d || {};
@@ -754,9 +760,11 @@ function computeScores(providers){
 
 // Score único: Distancia 50% + Servicios 30% + Tiempo de arribo 20%
 // Si no hay ciudad de origen (distKm === null), el componente de distancia aporta 0.
+// Servicios y Tiempo se calculan por percentil (relativo a todos los proveedores con dato),
+// no por rangos fijos, para que más volumen/velocidad siempre puntúe más.
 function computeDistanceScore(p, distKm){
   const scoreDistancia = (distKm === null) ? 0 : Math.max(0, 50 * (RADIO_KM - distKm) / RADIO_KM);
-  const scoreServicios = scoreVolumenV2(p.servicios_30d);
+  const scoreServicios = scoreServiciosPercentil(p.servicios_30d);
   const scoreVelocidad = ((p.score_velocidad || 0) / 40) * 20;
   return Math.round(scoreDistancia + scoreServicios + scoreVelocidad);
 }
