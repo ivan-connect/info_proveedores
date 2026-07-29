@@ -534,13 +534,15 @@ function haversineKm(lat1, lon1, lat2, lon2){
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
 
-// Poblar el datalist con los nombres de ciudades conocidas
+// Poblar el datalist con los nombres de ciudades conocidas, en orden alfabético
 const ciudadesList = document.getElementById('ciudadesList');
-Object.values(CITY_COORDS).forEach(c=>{
-  const opt = document.createElement('option');
-  opt.value = c.nombre;
-  ciudadesList.appendChild(opt);
-});
+Object.values(CITY_COORDS)
+  .sort((a,b)=> a.nombre.localeCompare(b.nombre, 'es'))
+  .forEach(c=>{
+    const opt = document.createElement('option');
+    opt.value = c.nombre;
+    ciudadesList.appendChild(opt);
+  });
 
 const serviceLabels = {gl:'Grúa liviana', gancho:'Gancho', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
 const activeServices = new Set();
